@@ -4,12 +4,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("users", {
       id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      uuid: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,

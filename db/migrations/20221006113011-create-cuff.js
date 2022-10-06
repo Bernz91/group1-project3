@@ -2,14 +2,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('styles', {
+    await queryInterface.createTable('cuffs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      style_name: {
+      cuff_name: {
+        type: Sequelize.STRING
+      },
+      additional_cost: {
+        type: Sequelize.INTEGER
+      },
+      image_one: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -23,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('styles');
+    await queryInterface.dropTable('cuffs');
   }
 };
