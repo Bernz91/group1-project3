@@ -1,21 +1,21 @@
 const BaseController = require("./baseController");
 
-class CollarsController extends BaseController {
+class CuffsController extends BaseController {
   constructor(model) {
     super(model);
   }
 
-  // Insert collar
+  // Insert cuff
   async insertOne(req, res) {
-    const { collar_name, additional_cost, image_one } = req.body;
+    const { cuff_name, additional_cost, image_one } = req.body;
     console.log(req.body);
     try {
-      const newCollar = await this.model.create({
-        collar_name: collar_name,
+      const newCuff = await this.model.create({
+        collar_name: cuff_name,
         additional_cost: additional_cost,
         image_one: image_one,
       });
-      return res.json(newCollar);
+      return res.json(newCuff);
     } catch (err) {
       console.log(err);
       return res.status(400).json({ error: true, msg: err });
@@ -24,25 +24,25 @@ class CollarsController extends BaseController {
 
   // Retrieve specific collar
   async getOne(req, res) {
-    const { collarID } = req.params;
+    const { cuffID } = req.params;
     try {
-      const collar = await this.model.findByPk(collarID);
-      return res.json(collar);
+      const cuff = await this.model.findByPk(cuffID);
+      return res.json(cuff);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
   // Edit specific collar
-  async editCollar(req, res) {
-    const { collarId } = req.params;
+  async editCuff(req, res) {
+    const { cuffId } = req.params;
     try {
-      const collar = await this.model.findByPk(collarId);
-      return res.json(collar);
+      const cuff = await this.model.findByPk(cuffId);
+      return res.json(cuff);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 }
 
-module.exports = CollarsController;
+module.exports = CuffsController;
