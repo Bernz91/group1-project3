@@ -1,7 +1,6 @@
 {
   "name": "project3-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -11,7 +10,6 @@
     "sequelize": "^6.23.2",
     "sequelize-cli": "^6.5.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -25,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/Bernz91/group1-project3/issues"
   },
-  "homepage": "https://github.com/Bernz91/group1-project3#readme"
+  "homepage": "https://github.com/Bernz91/group1-project3#readme",
+  "description": ""
 }
