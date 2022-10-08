@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-//hello
 class FabricsRouter {
   constructor(controller) {
     this.controller = controller;
