@@ -22,7 +22,7 @@ class CuffsController extends BaseController {
     }
   }
 
-  // Retrieve specific collar
+  // Retrieve specific cuff
   async getOne(req, res) {
     const { cuffID } = req.params;
     try {
