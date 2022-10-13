@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   user.init(
     {
-      uuid: DataTypes.UUID,
+      first_name: DataTypes.STRING,
+      last_name: DataTypes.STRING,
       email: DataTypes.STRING,
       phone: DataTypes.STRING,
       email_verification: DataTypes.DATE,
@@ -22,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "user",
-      underscored: true,
     }
   );
   return user;
