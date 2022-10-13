@@ -10,6 +10,8 @@ const CuffsRouter = require("./routers/cuffsRouter");
 const FrontsRouter = require("./routers/frontsRouter");
 const PocketsRouter = require("./routers/pocketsRouter");
 
+const UsersRouter = require("./routers/usersRouter");
+
 // importing Controllers
 const FabricsController = require("./controllers/fabricsController");
 const CollarsController = require("./controllers/collarsController");
@@ -18,9 +20,11 @@ const CuffsController = require("./controllers/cuffsController");
 const FrontsController = require("./controllers/frontsController");
 const PocketsController = require("./controllers/pocketsController");
 
+const UsersController = require("./controllers/usersController");
+
 // importing DB
 const db = require("./db/models/index");
-const { fabric, collar, back, cuff, front, pocket } = db;
+const { fabric, collar, back, cuff, front, pocket, user } = db;
 
 // initializing Controllers -> note the lowercase for the first word
 const fabricsController = new FabricsController(fabric);
@@ -30,6 +34,8 @@ const cuffsController = new CuffsController(cuff);
 const frontsController = new FrontsController(front);
 const pocketsController = new PocketsController(pocket);
 
+const usersController = new UsersController(user);
+
 // inittializing Routers
 const fabricRouter = new FabricsRouter(fabricsController).routes();
 const collarRouter = new CollarsRouter(collarsController).routes();
@@ -37,6 +43,8 @@ const backRouter = new BacksRouter(backsController).routes();
 const cuffRouter = new CuffsRouter(cuffsController).routes();
 const frontRouter = new FrontsRouter(frontsController).routes();
 const pocketRouter = new PocketsRouter(pocketsController).routes();
+
+const userRouter = new UsersRouter(usersController).routes();
 
 const PORT = process.env.PORT;
 const app = express();
@@ -54,6 +62,8 @@ app.use("/backs", backRouter);
 app.use("/cuffs", cuffRouter);
 app.use("/fronts", frontRouter);
 app.use("/pockets", pocketRouter);
+
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
