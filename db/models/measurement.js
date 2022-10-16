@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       user_uuid: DataTypes.UUID,
       category_by_user: DataTypes.STRING,
+      measurement_type: DataTypes.STRING,
       collar: DataTypes.INTEGER,
       shoulders: DataTypes.INTEGER,
       chest: DataTypes.INTEGER,
@@ -29,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "measurement",
-      underscored: true,
+      // underscored: true,
     }
   );
   return measurement;

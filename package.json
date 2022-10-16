@@ -8,11 +8,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "pg": "^8.8.0",
-    "sequelize": "^6.23.2",
-    "sequelize-cli": "^6.5.1",
+    "sequelize": "^6.25.1",
     "uuid": "^9.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -26,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/Bernz91/group1-project3/issues"
   },
-  "homepage": "https://github.com/Bernz91/group1-project3#readme"
+  "homepage": "https://github.com/Bernz91/group1-project3#readme",
+  "devDependencies": {
+    "sequelize-cli": "^6.5.1"
+  }
 }

@@ -19,6 +19,9 @@ module.exports = {
       category_by_user: {
         type: Sequelize.STRING,
       },
+      measurement_type: {
+        type: Sequelize.STRING,
+      },
       collar: {
         type: Sequelize.INTEGER,
       },
