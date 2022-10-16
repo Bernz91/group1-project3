@@ -16,15 +16,15 @@ module.exports = (sequelize, DataTypes) => {
       payment_id: DataTypes.INTEGER,
       user_uuid: DataTypes.UUID,
       quantity: DataTypes.INTEGER,
-      subtotal: DataTypes.STRING,
+      subtotal: DataTypes.INTEGER,
       shipping_fee: DataTypes.INTEGER,
-      total: DataTypes.STRING,
+      total: DataTypes.INTEGER,
       status: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "order",
-      underscored: true,
+      // underscored: true,
     }
   );
   return order;
