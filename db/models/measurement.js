@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   measurement.init(
     {
-      user_uuid: DataTypes.UUID,
+      user_uuid: DataTypes.STRING,
       category_by_user: DataTypes.STRING,
       collar: DataTypes.INTEGER,
       shoulders: DataTypes.INTEGER,

@@ -2,6 +2,8 @@ const cors = require("cors");
 const express = require("express");
 require("dotenv").config();
 
+const auth = require("./middlewares/auth");
+
 // importing Routers
 const FabricsRouter = require("./routers/fabricsRouter");
 const CollarsRouter = require("./routers/collarsRouter");
