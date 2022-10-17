@@ -9,6 +9,7 @@ class UsersController extends BaseController {
   // Insert user
   async insertOne(req, res) {
     const {
+      id,
       first_name,
       last_name,
       email,
@@ -19,7 +20,7 @@ class UsersController extends BaseController {
     console.log(req.body);
     try {
       const newUser = await this.model.create({
-        id: uuidv4(),
+        id: id,
         first_name: first_name,
         last_name: last_name,
         email: email,

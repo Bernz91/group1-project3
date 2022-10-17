@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       user_uuid: {
-        type: Sequelize.UUID,
+        type: Sequelize.STRING,
         references: {
           model: "users",
           key: "id",

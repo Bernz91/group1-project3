@@ -4,6 +4,7 @@ const router = express.Router();
 class BacksRouter {
   constructor(controller) {
     this.controller = controller;
+
   }
   routes() {
     //get all
@@ -13,7 +14,10 @@ class BacksRouter {
     router.get("/:backId", this.controller.getOne.bind(this.controller));
 
     //insert one
-    router.post("/", this.controller.insertOne.bind(this.controller));
+    router.post(
+      "/",
+      this.controller.insertOne.bind(this.controller)
+    );
     return router;
   }
 }
