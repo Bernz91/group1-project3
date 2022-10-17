@@ -21,6 +21,9 @@ module.exports = {
       phone: {
         type: Sequelize.STRING,
       },
+      shipping_address: {
+        type: Sequelize.TEXT,
+      },
       email_verification: {
         type: Sequelize.DATE,
       },

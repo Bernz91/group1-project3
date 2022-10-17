@@ -8,28 +8,14 @@ class UsersController extends BaseController {
 
   // Insert user
   async insertOne(req, res) {
-    const {
-      id,
-      first_name,
-      last_name,
-      email,
-      phone,
-      email_verification,
-      password,
-    } = req.body;
+    const { id, email } = req.body;
     console.log(req.body);
     try {
       const newUser = await this.model.create({
         id: id,
-        first_name: first_name,
-        last_name: last_name,
         email: email,
-        phone: phone,
-        email_verification: email_verification,
-        password: password,
       });
       return res.json(newUser);
-      
     } catch (err) {
       console.log(err);
       return res.status(400).json({ error: true, msg: err });
@@ -49,9 +35,19 @@ class UsersController extends BaseController {
 
   // Edit specific user
   async editUser(req, res) {
+    const { first_name, last_name, phone, shipping_address } = req.body;
     const { userId } = req.params;
+    console.log(req.body);
     try {
       const user = await this.model.findByPk(userId);
+
+      user.set({
+        first_name: first_name,
+        last_name: last_name,
+        phone: phone,
+        shipping_address: shipping_address,
+      });
+      await user.save();
       return res.json(user);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
