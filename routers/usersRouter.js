@@ -14,6 +14,9 @@ class UsersRouter {
 
     //insert one
     router.post("/", this.controller.insertOne.bind(this.controller));
+    
+    //edit one
+    router.put("/:userId", this.controller.editUser.bind(this.controller));
     return router;
   }
 }
