@@ -8,7 +8,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany (models.user)
+      this.hasMany (models.fabric)
+      this.hasMany (models.collar)
+      this.hasMany (models.cuff)
+      this.hasMany (models.front)
+      this.hasMany (models.pocket)
+      this.hasMany (models.back)
     }
   }
   wishlist.init(

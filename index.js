@@ -14,6 +14,9 @@ const PocketsRouter = require("./routers/pocketsRouter");
 
 const UsersRouter = require("./routers/usersRouter");
 
+const OrderRouter = require("./routers/orderRouter");
+const OrderDetailsRouter = require("./routers/orderDetailsRouter");
+
 // importing Controllers
 const FabricsController = require("./controllers/fabricsController");
 const CollarsController = require("./controllers/collarsController");
@@ -24,9 +27,23 @@ const PocketsController = require("./controllers/pocketsController");
 
 const UsersController = require("./controllers/usersController");
 
+const OrderController = require("./controllers/orderController");
+const OrderDetailsController = require("./controllers/orderDetailsController");
+
 // importing DB
 const db = require("./db/models/index");
-const { fabric, collar, back, cuff, front, pocket, user } = db;
+const {
+  fabric,
+  collar,
+  back,
+  cuff,
+  front,
+  pocket,
+  user,
+  measurement,
+  order,
+  order_detail,
+} = db;
 
 // initializing Controllers -> note the lowercase for the first word
 const fabricsController = new FabricsController(fabric);
@@ -38,6 +55,9 @@ const pocketsController = new PocketsController(pocket);
 
 const usersController = new UsersController(user);
 
+const orderController = new OrderController(order);
+const orderDetailsController = new OrderDetailsController(order_detail);
+
 // inittializing Routers
 const fabricRouter = new FabricsRouter(fabricsController).routes();
 const collarRouter = new CollarsRouter(collarsController).routes();
@@ -47,6 +67,10 @@ const frontRouter = new FrontsRouter(frontsController).routes();
 const pocketRouter = new PocketsRouter(pocketsController).routes();
 
 const userRouter = new UsersRouter(usersController).routes();
+const orderRouter = new OrderRouter(orderController).routes();
+const orderDetailsRouter = new OrderDetailsRouter(
+  orderDetailsController
+).routes();
 
 const PORT = process.env.PORT;
 const app = express();
@@ -66,6 +90,8 @@ app.use("/fronts", frontRouter);
 app.use("/pockets", pocketRouter);
 
 app.use("/users", userRouter);
+
+app.use("/orders", orderDetailsRouter);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
