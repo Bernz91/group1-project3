@@ -17,9 +17,9 @@ module.exports = {
           material: ["100% Cotton", "Cotton"],
           pattern: ["Stripes"],
           image_one:
-            "https://cdn.shopify.com/s/files/1/0335/1203/0343/products/CSCSPFBOXF0010A_f7d7cd90-9cc5-4024-a04a-308d6d3d82c6.jpg?v=1664534456",
+            "https://www.editsuits.com/wp-content/uploads/2020/05/ES_BC_N464A_1-scaled.jpg",
           image_two:
-            "https://cdn.shopify.com/s/files/1/0335/1203/0343/products/CSCSPFBOXF0010F_c3eeb843-5f84-4cd8-ae3e-c6b1d7637213.jpg?v=1664534456",
+            "https://www.editsuits.com/wp-content/uploads/2020/05/ES_BC_N464A_2-scaled.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -34,9 +34,9 @@ module.exports = {
           material: ["100% Cotton", "Cotton"],
           pattern: ["Stripes"],
           image_one:
-            "https://cdn.shopify.com/s/files/1/0335/1203/0343/products/CSCSPFBOXF0012A_760b7628-df6e-4d7b-8807-7ece3f65dea5.jpg?v=1664534466",
+            "https://i.ebayimg.com/images/g/FKIAAOSwSzdgjMuR/s-l500.jpg",
           image_two:
-            "https://cdn.shopify.com/s/files/1/0335/1203/0343/products/CSCSPFBOXF0012F_a5abf248-125c-4af3-b5e1-7ba81deed80c.jpg?v=1664534466",
+            "https://i.ebayimg.com/images/g/I0kAAOSwEldgjMuR/s-l1600.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -44,8 +44,6 @@ module.exports = {
       {}
     );
   },
-
-  
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete("fabrics", null, {});
