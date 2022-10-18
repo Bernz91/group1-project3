@@ -53,9 +53,9 @@ const cuffsController = new CuffsController(cuff);
 const frontsController = new FrontsController(front);
 const pocketsController = new PocketsController(pocket);
 
-const usersController = new UsersController(user);
+const usersController = new UsersController(user, measurement);
 
-const orderController = new OrderController(order);
+const orderController = new OrderController(order, order_detail);
 const orderDetailsController = new OrderDetailsController(order_detail);
 
 // inittializing Routers

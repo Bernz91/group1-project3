@@ -53,7 +53,7 @@ class OrderDetailsController extends BaseController {
     }
   }
 
-  // Edit specific pocket
+  // Edit specific order
   async editOrderDetail(req, res) {
     const { orderDetailID } = req.params;
     try {

@@ -2,8 +2,9 @@ const BaseController = require("./baseController");
 const { v4: uuidv4 } = require("uuid");
 
 class UsersController extends BaseController {
-  constructor(model) {
+  constructor(model, measurementModel) {
     super(model);
+    this.measurementModel = measurementModel;
   }
 
   // Insert user
@@ -28,6 +29,36 @@ class UsersController extends BaseController {
     try {
       const user = await this.model.findByPk(userId);
       return res.json(user);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Retrieve specific user measurement
+  async getOneMeasurement(req, res) {
+    const { userId } = req.params;
+    try {
+      const userMeasurement = await this.measurementModel.findByPk({
+        where: {
+          user_uuid: userId,
+        },
+      });
+      return res.json(userMeasurement);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Retrieve specific user measurement
+  async getAllMeasurements(req, res) {
+    const { userId } = req.params;
+    try {
+      const allMeasurements = await this.measurementModel.findAll({
+        where: {
+          user_uuid: userId,
+        },
+      });
+      return res.json(allMeasurements);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
