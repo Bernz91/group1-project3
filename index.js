@@ -26,7 +26,7 @@ const UsersController = require("./controllers/usersController");
 
 // importing DB
 const db = require("./db/models/index");
-const { fabric, collar, back, cuff, front, pocket, user } = db;
+const { fabric, collar, back, cuff, front, pocket, user, measurement } = db;
 
 // initializing Controllers -> note the lowercase for the first word
 const fabricsController = new FabricsController(fabric);
@@ -36,7 +36,7 @@ const cuffsController = new CuffsController(cuff);
 const frontsController = new FrontsController(front);
 const pocketsController = new PocketsController(pocket);
 
-const usersController = new UsersController(user);
+const usersController = new UsersController(user, measurement);
 
 // inittializing Routers
 const fabricRouter = new FabricsRouter(fabricsController).routes();

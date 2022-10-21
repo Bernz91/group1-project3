@@ -8,12 +8,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.user);
     }
   }
   measurement.init(
     {
-      user_id: DataTypes.STRING,
+      userId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
       category_by_user: DataTypes.STRING,
       measurement_type: DataTypes.STRING,
       collar: DataTypes.INTEGER,

@@ -12,7 +12,7 @@ module.exports = {
       payment_id: {
         type: Sequelize.INTEGER,
       },
-      user_id: {
+      userId: {
         type: Sequelize.STRING,
         references: {
           model: "users",

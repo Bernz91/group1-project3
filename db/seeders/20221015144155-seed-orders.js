@@ -11,7 +11,7 @@ module.exports = {
         {
           // tied to user 1 "another test" of user seeders (hard-coded)
           payment_id: 1,
-          user_uuid: userId[0][0].id,
+          userId: userId[0][0].id,
           quantity: 1,
           subtotal: 1,
           shipping_fee: 25,

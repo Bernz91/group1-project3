@@ -2,9 +2,9 @@ const BaseController = require("./baseController");
 const { v4: uuidv4 } = require("uuid");
 
 class UsersController extends BaseController {
-  constructor(model, sizeModel) {
+  constructor(model, measurementModel) {
     super(model);
-    this.sizeModel = sizeModel;
+    this.measurementModel = measurementModel;
   }
 
   // Insert user
@@ -55,8 +55,8 @@ class UsersController extends BaseController {
     }
   }
 
-  // Insert size profile
-  async insertOneSize(req, res) {
+  // Insert measurement profile
+  async insertOneMeasurement(req, res) {
     const { userId } = req.params;
     const {
       category_by_user,
@@ -74,8 +74,8 @@ class UsersController extends BaseController {
     } = req.body;
     console.log(req.body);
     try {
-      const newSize = await this.sizeModel.create({
-        user_id: userId,
+      const newMeasurement = await this.measurementModel.create({
+        userId: userId,
         category_by_user: category_by_user,
         measurement_type: measurement_type,
         collar: collar,
@@ -89,31 +89,31 @@ class UsersController extends BaseController {
         right_cuff: right_cuff,
         shirt_length: shirt_length,
       });
-      return res.json(newSize);
+      return res.json(newMeasurement);
     } catch (err) {
       console.log(err);
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
-  // Retrieve all sizes for specific user
-  async getSizes(req, res) {
+  // Retrieve all measurements for specific user
+  async getMeasurements(req, res) {
     const { userId } = req.params;
     try {
-      const sizeProfiles = await this.sizeModel.findAll({
+      const measurementProfiles = await this.measurementModel.findAll({
         where: {
-          user_id: userId,
+          userId: userId,
         },
       });
-      return res.json(sizeProfiles);
+      return res.json(measurementProfiles);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
-  // Edit specific sizeProfile
-  async editSize(req, res) {
-    const { sizeId } = req.params;
+  // Edit specific measurementProfile
+  async editMeasurement(req, res) {
+    const { measurementId } = req.params;
     const {
       category_by_user,
       measurement_type,
@@ -130,9 +130,11 @@ class UsersController extends BaseController {
     } = req.body;
     console.log(req.body);
     try {
-      const sizeProfile = await this.sizeModel.findByPk(sizeId);
+      const measurementProfile = await this.measurementModel.findByPk(
+        measurementId
+      );
 
-      sizeProfile.set({
+      measurementProfile.set({
         category_by_user: category_by_user,
         measurement_type: measurement_type,
         collar: collar,
@@ -146,8 +148,8 @@ class UsersController extends BaseController {
         right_cuff: right_cuff,
         shirt_length: shirt_length,
       });
-      await sizeProfile.save();
-      return res.json(sizeProfile);
+      await measurementProfile.save();
+      return res.json(measurementProfile);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
