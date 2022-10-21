@@ -10,7 +10,7 @@ module.exports = {
           fabric_name: "Sky Blue Wide Block Stripes Shirt",
           product_quantity: 10,
           description:
-            "Looser weave, lighter in weight but not to the point that structure is compromised. This oxford shirt is soft and comfortable, and would serve you well for warmer days. This shirt features fun and bold stripes that is perfect for those casual weekends or a day at the beach.",
+            "Looser weave, lighter in weight but not to the point that structure is compromised.",
           selling_price: 189,
           style: ["Casual", "Smart Casual"],
           colour: ["Blue", "White"],
