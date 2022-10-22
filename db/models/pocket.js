@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.order_detail);
+      this.belongsTo(models.wishlist);
+
     }
   }
   pocket.init({

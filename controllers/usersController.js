@@ -34,6 +34,36 @@ class UsersController extends BaseController {
     }
   }
 
+  // Retrieve specific user measurement
+  async getOneMeasurement(req, res) {
+    const { userId } = req.params;
+    try {
+      const userMeasurement = await this.measurementModel.findByPk({
+        where: {
+          user_uuid: userId,
+        },
+      });
+      return res.json(userMeasurement);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Retrieve specific user measurement
+  async getAllMeasurements(req, res) {
+    const { userId } = req.params;
+    try {
+      const allMeasurements = await this.measurementModel.findAll({
+        where: {
+          user_uuid: userId,
+        },
+      });
+      return res.json(allMeasurements);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
   // Edit specific user
   async editUser(req, res) {
     const { first_name, last_name, phone, shipping_address } = req.body;
