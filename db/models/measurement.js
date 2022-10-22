@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   measurement.init(
     {
-      user_uuid: DataTypes.STRING,
+      user_id: DataTypes.STRING,
       category_by_user: DataTypes.STRING,
       measurement_type: DataTypes.STRING,
       collar: DataTypes.INTEGER,
