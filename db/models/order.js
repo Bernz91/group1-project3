@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.order_detail);
-      this.hasMany (models.user)
+      this.belongsTo(models.user)
+      this.belongsTo(models.wishlist)
     }
   }
   order.init(
