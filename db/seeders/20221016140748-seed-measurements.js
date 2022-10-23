@@ -10,7 +10,7 @@ module.exports = {
 
       [
         {
-          user_uuid: userId[0][0].id,
+          user_id: userId[0][0].id,
           category_by_user: "new",
           measurement_type: "cm",
           collar: 12,
