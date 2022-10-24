@@ -30,6 +30,12 @@ class UsersRouter {
       this.controller.insertOneMeasurement.bind(this.controller)
     );
 
+    //delete one size profile
+    router.delete(
+      "/:userId/measurements/:measurementId",
+      this.controller.deleteOneMeasurement.bind(this.controller)
+    );
+
     //edit size profile
     router.put(
       "/:userId/:measurementId",

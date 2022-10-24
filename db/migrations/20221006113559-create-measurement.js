@@ -16,10 +16,10 @@ module.exports = {
           key: "id",
         },
       },
-      category_by_user: {
+      categoryByUser: {
         type: Sequelize.STRING,
       },
-      measurement_type: {
+      measurementType: {
         type: Sequelize.STRING,
       },
       collar: {
@@ -34,22 +34,22 @@ module.exports = {
       waist: {
         type: Sequelize.INTEGER,
       },
-      sleeves_length: {
+      sleevesLength: {
         type: Sequelize.INTEGER,
       },
-      sleeves_width: {
+      sleevesWidth: {
         type: Sequelize.INTEGER,
       },
       elbow: {
         type: Sequelize.INTEGER,
       },
-      left_cuff: {
+      leftCuff: {
         type: Sequelize.INTEGER,
       },
-      right_cuff: {
+      rightCuff: {
         type: Sequelize.INTEGER,
       },
-      shirt_length: {
+      shirtLength: {
         type: Sequelize.INTEGER,
       },
       createdAt: {

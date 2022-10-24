@@ -59,35 +59,35 @@ class UsersController extends BaseController {
   async insertOneMeasurement(req, res) {
     const { userId } = req.params;
     const {
-      category_by_user,
-      measurement_type,
+      categoryByUser,
+      measurementType,
       collar,
       shoulders,
       chest,
       waist,
-      sleeves_length,
-      sleeves_width,
+      sleevesLength,
+      sleevesWidth,
       elbow,
-      left_cuff,
-      right_cuff,
-      shirt_length,
+      leftCuff,
+      rightCuff,
+      shirtLength,
     } = req.body;
     console.log(req.body);
     try {
       const newMeasurement = await this.measurementModel.create({
         userId: userId,
-        category_by_user: category_by_user,
-        measurement_type: measurement_type,
+        categoryByUser: categoryByUser,
+        measurementType: measurementType,
         collar: collar,
         shoulders: shoulders,
         chest: chest,
         waist: waist,
-        sleeves_length: sleeves_length,
-        sleeves_width: sleeves_width,
+        sleevesLength: sleevesLength,
+        sleevesWidth: sleevesWidth,
         elbow: elbow,
-        left_cuff: left_cuff,
-        right_cuff: right_cuff,
-        shirt_length: shirt_length,
+        leftCuff: leftCuff,
+        rightCuff: rightCuff,
+        shirtLength: shirtLength,
       });
       return res.json(newMeasurement);
     } catch (err) {
@@ -106,6 +106,22 @@ class UsersController extends BaseController {
         },
       });
       return res.json(measurementProfiles);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete specific measurement for specific user
+  async deleteOneMeasurement(req, res) {
+    const { userId, measurementId } = req.params;
+    try {
+      const deletedSize = await this.measurementModel.destroy({
+        where: {
+          id: measurementId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedSize);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
