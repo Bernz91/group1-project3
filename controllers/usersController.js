@@ -2,9 +2,9 @@ const BaseController = require("./baseController");
 const { v4: uuidv4 } = require("uuid");
 
 class UsersController extends BaseController {
-  constructor(model, sizeModel) {
+  constructor(model, measurementModel) {
     super(model);
-    this.sizeModel = sizeModel;
+    this.measurementModel = measurementModel;
   }
 
   // Insert user
@@ -85,65 +85,81 @@ class UsersController extends BaseController {
     }
   }
 
-  // Insert size profile
-  async insertOneSize(req, res) {
+  // Insert measurement profile
+  async insertOneMeasurement(req, res) {
     const { userId } = req.params;
     const {
-      category_by_user,
-      measurement_type,
+      categoryByUser,
+      measurementType,
       collar,
       shoulders,
       chest,
       waist,
-      sleeves_length,
-      sleeves_width,
+      sleevesLength,
+      sleevesWidth,
       elbow,
-      left_cuff,
-      right_cuff,
-      shirt_length,
+      leftCuff,
+      rightCuff,
+      shirtLength,
     } = req.body;
     console.log(req.body);
     try {
-      const newSize = await this.sizeModel.create({
-        user_id: userId,
-        category_by_user: category_by_user,
-        measurement_type: measurement_type,
+      const newMeasurement = await this.measurementModel.create({
+        userId: userId,
+        categoryByUser: categoryByUser,
+        measurementType: measurementType,
         collar: collar,
         shoulders: shoulders,
         chest: chest,
         waist: waist,
-        sleeves_length: sleeves_length,
-        sleeves_width: sleeves_width,
+        sleevesLength: sleevesLength,
+        sleevesWidth: sleevesWidth,
         elbow: elbow,
-        left_cuff: left_cuff,
-        right_cuff: right_cuff,
-        shirt_length: shirt_length,
+        leftCuff: leftCuff,
+        rightCuff: rightCuff,
+        shirtLength: shirtLength,
       });
-      return res.json(newSize);
+      return res.json(newMeasurement);
     } catch (err) {
       console.log(err);
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
-  // Retrieve all sizes for specific user
-  async getSizes(req, res) {
+  // Retrieve all measurements for specific user
+  async getMeasurements(req, res) {
     const { userId } = req.params;
     try {
-      const sizeProfiles = await this.sizeModel.findAll({
+      const measurementProfiles = await this.measurementModel.findAll({
         where: {
-          user_id: userId,
+          userId: userId,
         },
       });
-      return res.json(sizeProfiles);
+      return res.json(measurementProfiles);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
-  // Edit specific sizeProfile
-  async editSize(req, res) {
-    const { sizeId } = req.params;
+  // Delete specific measurement for specific user
+  async deleteOneMeasurement(req, res) {
+    const { userId, measurementId } = req.params;
+    try {
+      const deletedSize = await this.measurementModel.destroy({
+        where: {
+          id: measurementId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedSize);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Edit specific measurementProfile
+  async editMeasurement(req, res) {
+    const { measurementId } = req.params;
     const {
       category_by_user,
       measurement_type,
@@ -160,9 +176,11 @@ class UsersController extends BaseController {
     } = req.body;
     console.log(req.body);
     try {
-      const sizeProfile = await this.sizeModel.findByPk(sizeId);
+      const measurementProfile = await this.measurementModel.findByPk(
+        measurementId
+      );
 
-      sizeProfile.set({
+      measurementProfile.set({
         category_by_user: category_by_user,
         measurement_type: measurement_type,
         collar: collar,
@@ -176,8 +194,8 @@ class UsersController extends BaseController {
         right_cuff: right_cuff,
         shirt_length: shirt_length,
       });
-      await sizeProfile.save();
-      return res.json(sizeProfile);
+      await measurementProfile.save();
+      return res.json(measurementProfile);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

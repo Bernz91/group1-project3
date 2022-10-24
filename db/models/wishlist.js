@@ -19,7 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   wishlist.init(
     {
-      user_id: DataTypes.STRING,
+      userId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
       fabric_id: DataTypes.INTEGER,
       collar_id: DataTypes.INTEGER,
       cuff_id: DataTypes.INTEGER,

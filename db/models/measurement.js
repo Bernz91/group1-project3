@@ -8,25 +8,30 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.order_detail);
-      this.hasMany(models.user);
+      this.belongsTo(models.user);
     }
   }
   measurement.init(
     {
-      user_id: DataTypes.STRING,
-      category_by_user: DataTypes.STRING,
-      measurement_type: DataTypes.STRING,
+      userId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
+      categoryByUser: DataTypes.STRING,
+      measurementType: DataTypes.STRING,
       collar: DataTypes.INTEGER,
       shoulders: DataTypes.INTEGER,
       chest: DataTypes.INTEGER,
       waist: DataTypes.INTEGER,
-      sleeves_length: DataTypes.INTEGER,
-      sleeves_width: DataTypes.INTEGER,
+      sleevesLength: DataTypes.INTEGER,
+      sleevesWidth: DataTypes.INTEGER,
       elbow: DataTypes.INTEGER,
-      left_cuff: DataTypes.INTEGER,
-      right_cuff: DataTypes.INTEGER,
-      shirt_length: DataTypes.INTEGER,
+      leftCuff: DataTypes.INTEGER,
+      rightCuff: DataTypes.INTEGER,
+      shirtLength: DataTypes.INTEGER,
     },
     {
       sequelize,

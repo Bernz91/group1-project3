@@ -20,20 +20,26 @@ class UsersRouter {
 
     //get all size profiles
     router.get(
-      "/:userId/SizeProfiles",
-      this.controller.getSizes.bind(this.controller)
+      "/:userId/measurements",
+      this.controller.getMeasurements.bind(this.controller)
     );
 
     //insert one size profile
     router.post(
-      "/:userId/SizeProfiles",
-      this.controller.insertOneSize.bind(this.controller)
+      "/:userId/measurements",
+      this.controller.insertOneMeasurement.bind(this.controller)
+    );
+
+    //delete one size profile
+    router.delete(
+      "/:userId/measurements/:measurementId",
+      this.controller.deleteOneMeasurement.bind(this.controller)
     );
 
     //edit size profile
     router.put(
-      "/:userId/:sizeId",
-      this.controller.editSize.bind(this.controller)
+      "/:userId/:measurementId",
+      this.controller.editMeasurement.bind(this.controller)
     );
 
     return router;

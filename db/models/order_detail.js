@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         through: "pocketOrderDetails",
       });
       this.hasMany(models.order);
-      this.hasMany(models.measurement);
     }
   }
   order_detail.init(
