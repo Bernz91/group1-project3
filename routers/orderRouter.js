@@ -14,13 +14,13 @@ class OrderRouter {
 
     //get all orders associated with this user
     router.get(
-      "/orders/:user_uuid",
+      "/orders/:userId",
       this.controller.getAllOrders.bind(this.controller)
     );
 
     //get specific order details from orderDetailmodel
     router.get(
-      "/orders/:order_id",
+      "/orders/:orderId",
       this.controller.getOneOrderDetail.bind(this.controller)
     );
 

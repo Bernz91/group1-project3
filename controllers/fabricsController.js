@@ -8,30 +8,30 @@ class FabricsController extends BaseController {
   // Insert fabric
   async insertOne(req, res) {
     const {
-      fabric_name,
-      product_quantity,
+      fabricName,
+      productQuantity,
       description,
-      selling_price,
+      sellingPrice,
       style,
       colour,
       material,
       pattern,
-      image_one,
-      image_two,
+      imageOne,
+      imageTwo,
     } = req.body;
     console.log(req.body);
     try {
       const newFabric = await this.model.create({
-        fabric_name: fabric_name,
-        product_quantity: product_quantity,
+        fabricName: fabricName,
+        productQuantity: productQuantity,
         description: description,
-        selling_price: selling_price,
+        sellingPrice: sellingPrice,
         style: style,
         colour: colour,
         material: material,
         pattern: pattern,
-        image_one: image_one,
-        image_two: image_two,
+        imageOne: imageOne,
+        imageTwo: imageTwo,
       });
       return res.json(newFabric);
     } catch (err) {

@@ -10,9 +10,17 @@ module.exports = {
       [
         {
           id: uuidv4(),
-          first_name: "another",
-          last_name: "test",
-          email: "test@mail.com",
+          firstName: "user1",
+          lastName: "user1",
+          email: "test1@mail.com",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: uuidv4(),
+          firstName: "user2",
+          lastName: "user2",
+          email: "test2@mail.com",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

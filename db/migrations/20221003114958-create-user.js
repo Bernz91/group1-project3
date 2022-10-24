@@ -8,10 +8,10 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
       },
-      first_name: {
+      firstName: {
         type: Sequelize.STRING,
       },
-      last_name: {
+      lastName: {
         type: Sequelize.STRING,
       },
       email: {
@@ -21,10 +21,10 @@ module.exports = {
       phone: {
         type: Sequelize.STRING,
       },
-      shipping_address: {
+      shippingAddress: {
         type: Sequelize.TEXT,
       },
-      email_verification: {
+      emailVerification: {
         type: Sequelize.DATE,
       },
       createdAt: {

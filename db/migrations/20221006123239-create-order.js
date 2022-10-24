@@ -9,10 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      payment_id: {
+      paymentId: {
         type: Sequelize.INTEGER,
       },
-      user_id: {
+      userId: {
         type: Sequelize.STRING,
         references: {
           model: "users",
@@ -25,7 +25,7 @@ module.exports = {
       subtotal: {
         type: Sequelize.STRING,
       },
-      shipping_fee: {
+      shippingFee: {
         type: Sequelize.INTEGER,
       },
       total: {

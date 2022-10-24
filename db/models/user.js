@@ -9,18 +9,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.measurement);
+      // this.belongsToMany(models.wishlist, {
+      //   through: "userWishlists",
+      // });
       this.hasMany(models.wishlist);
       this.hasMany(models.order);
     }
   }
   user.init(
     {
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
       email: DataTypes.STRING,
       phone: DataTypes.STRING,
-      shipping_address: DataTypes.TEXT,
-      email_verification: DataTypes.DATE,
+      shippingAddress: DataTypes.TEXT,
+      emailVerification: DataTypes.DATE,
     },
     {
       sequelize,

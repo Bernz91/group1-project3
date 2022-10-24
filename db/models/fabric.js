@@ -2,30 +2,26 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class fabric extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       this.belongsToMany(models.order_detail, {
         through: "fabricOrderDetails",
       });
-      this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
+      // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
+      this.belongsTo(models.wishlist);
     }
   }
   fabric.init(
     {
-      fabric_name: DataTypes.STRING,
-      product_quantity: DataTypes.INTEGER,
+      fabricName: DataTypes.STRING,
+      productQuantity: DataTypes.INTEGER,
       description: DataTypes.TEXT,
-      selling_price: DataTypes.INTEGER,
+      sellingPrice: DataTypes.INTEGER,
       style: DataTypes.ARRAY(DataTypes.STRING),
       colour: DataTypes.ARRAY(DataTypes.STRING),
       material: DataTypes.ARRAY(DataTypes.STRING),
       pattern: DataTypes.ARRAY(DataTypes.STRING),
-      image_one: DataTypes.STRING,
-      image_two: DataTypes.STRING,
+      imageOne: DataTypes.STRING,
+      imageTwo: DataTypes.STRING,
     },
     {
       sequelize,

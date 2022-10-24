@@ -8,46 +8,46 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsToMany(models.back, {
-        through: "backOrderDetails",
-      });
-      this.belongsToMany(models.collar, { through: "collarOrderDetails" });
-      this.belongsToMany(models.cuff, {
-        through: "cuffOrderDetails",
-      });
-      this.belongsToMany(models.fabric, { through: "fabricOrderDetails" });
-      this.belongsToMany(models.front, {
-        through: "frontOrderDetails",
-      });
-      this.belongsToMany(models.pocket, {
-        through: "pocketOrderDetails",
-      });
-      this.hasMany(models.order);
-      this.hasMany(models.measurement);
+      // this.belongsToMany(models.back, {
+      //   through: "backOrderDetails",
+      // });
+      // this.belongsToMany(models.collar, { through: "collarOrderDetails" });
+      // this.belongsToMany(models.cuff, {
+      //   through: "cuffOrderDetails",
+      // });
+      // this.belongsToMany(models.fabric, { through: "fabricOrderDetails" });
+      // this.belongsToMany(models.front, {
+      //   through: "frontOrderDetails",
+      // });
+      // this.belongsToMany(models.pocket, {
+      //   through: "pocketOrderDetails",
+      // });
+      // this.hasMany(models.order);
+      // this.hasMany(models.measurement);
     }
   }
   order_detail.init(
     {
-      order_id: DataTypes.INTEGER,
-      measurement_id: DataTypes.INTEGER,
-      fabric_id: {
+      orderId: DataTypes.INTEGER,
+      measurementId: DataTypes.INTEGER,
+      fabricId: {
         type: DataTypes.INTEGER,
         references: {
           model: "fabrics",
           key: "id",
         },
       },
-      collar_id: {
+      collarId: {
         type: DataTypes.INTEGER,
         references: {
           model: "collars",
           key: "id",
         },
       },
-      cuff_id: DataTypes.INTEGER,
-      front_id: DataTypes.INTEGER,
-      pocket_id: DataTypes.INTEGER,
-      back_id: DataTypes.INTEGER,
+      cuffId: DataTypes.INTEGER,
+      frontId: DataTypes.INTEGER,
+      pocketId: DataTypes.INTEGER,
+      backId: DataTypes.INTEGER,
       quantity: DataTypes.INTEGER,
       singleprice: DataTypes.INTEGER,
       totalprice: DataTypes.INTEGER,

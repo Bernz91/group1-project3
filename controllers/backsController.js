@@ -7,13 +7,13 @@ class BacksController extends BaseController {
 
   // Insert back
   async insertOne(req, res) {
-    const { back_name, additional_cost, image_one } = req.body;
+    const { backName, additionalCost, imageOne } = req.body;
     console.log(req.body);
     try {
       const newBack = await this.model.create({
-        back_name: back_name,
-        additional_cost: additional_cost,
-        image_one: image_one,
+        backName: backName,
+        additionalCost: additionalCost,
+        imageOne: imageOne,
       });
       return res.json(newBack);
     } catch (err) {
