@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsToMany(models.order_detail, {
+        through: "fabricOrderDetails",
+      });
+      this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
     }
   }
   fabric.init(

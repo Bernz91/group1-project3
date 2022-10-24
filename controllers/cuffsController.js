@@ -32,7 +32,7 @@ class CuffsController extends BaseController {
       return res.status(400).json({ error: true, msg: err });
     }
   }
-
+  
   // Edit specific collar
   async editCuff(req, res) {
     const { cuffId } = req.params;

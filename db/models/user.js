@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.measurement);
+      this.hasMany(models.wishlist);
+      this.hasMany(models.order);
     }
   }
   user.init(
