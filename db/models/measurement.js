@@ -10,11 +10,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.order_detail);
       // this.hasMany(models.user);
+      this.belongsTo(models.user);
     }
   }
   measurement.init(
     {
-      userId: DataTypes.STRING,
+      userId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
       categoryByUser: DataTypes.STRING,
       measurementType: DataTypes.STRING,
       collar: DataTypes.INTEGER,
