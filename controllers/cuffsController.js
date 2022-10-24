@@ -7,13 +7,13 @@ class CuffsController extends BaseController {
 
   // Insert cuff
   async insertOne(req, res) {
-    const { cuff_name, additional_cost, image_one } = req.body;
+    const { cuffName, additionalCost, imageOne } = req.body;
     console.log(req.body);
     try {
       const newCuff = await this.model.create({
-        collar_name: cuff_name,
-        additional_cost: additional_cost,
-        image_one: image_one,
+        collarName: cuffName,
+        additionalCost: additionalCost,
+        imageOne: imageOne,
       });
       return res.json(newCuff);
     } catch (err) {

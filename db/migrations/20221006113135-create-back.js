@@ -9,13 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      back_name: {
+      backName: {
         type: Sequelize.STRING,
       },
-      additional_cost: {
+      additionalCost: {
         type: Sequelize.INTEGER,
       },
-      image_one: {
+      imageOne: {
         type: Sequelize.STRING,
       },
       createdAt: {

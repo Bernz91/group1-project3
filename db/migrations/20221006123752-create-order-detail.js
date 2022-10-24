@@ -9,56 +9,56 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      order_id: {
+      orderId: {
         type: Sequelize.INTEGER,
         references: {
           model: "orders",
           key: "id",
         },
       },
-      measurement_id: {
+      measurementId: {
         type: Sequelize.INTEGER,
         references: {
           model: "measurements",
           key: "id",
         },
       },
-      fabric_id: {
+      fabricId: {
         type: Sequelize.INTEGER,
         references: {
           model: "fabrics",
           key: "id",
         },
       },
-      collar_id: {
+      collarId: {
         type: Sequelize.INTEGER,
         references: {
           model: "collars",
           key: "id",
         },
       },
-      cuff_id: {
+      cuffId: {
         type: Sequelize.INTEGER,
         references: {
           model: "cuffs",
           key: "id",
         },
       },
-      front_id: {
+      frontId: {
         type: Sequelize.INTEGER,
         references: {
           model: "fronts",
           key: "id",
         },
       },
-      pocket_id: {
+      pocketId: {
         type: Sequelize.INTEGER,
         references: {
           model: "pockets",
           key: "id",
         },
       },
-      back_id: {
+      backId: {
         type: Sequelize.INTEGER,
         references: {
           model: "backs",

@@ -7,13 +7,13 @@ class FrontsController extends BaseController {
 
   // Insert front
   async insertOne(req, res) {
-    const { front_name, additional_cost, image_one } = req.body;
+    const { frontName, additionalCost, imageOne } = req.body;
     console.log(req.body);
     try {
       const newFront = await this.model.create({
-        front_name: front_name,
-        additional_cost: additional_cost,
-        image_one: image_one,
+        frontName: frontName,
+        additionalCost: additionalCost,
+        imageOne: imageOne,
       });
       return res.json(newFront);
     } catch (err) {

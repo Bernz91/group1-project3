@@ -16,6 +16,7 @@ const UsersRouter = require("./routers/usersRouter");
 
 const OrderRouter = require("./routers/orderRouter");
 const OrderDetailsRouter = require("./routers/orderDetailsRouter");
+const WishlistsRouter = require("./routers/wishlistsRouter");
 
 // importing Controllers
 const FabricsController = require("./controllers/fabricsController");
@@ -29,6 +30,7 @@ const UsersController = require("./controllers/usersController");
 
 const OrderController = require("./controllers/orderController");
 const OrderDetailsController = require("./controllers/orderDetailsController");
+const WishlistsController = require("./controllers/wishlistController");
 
 // importing DB
 const db = require("./db/models/index");
@@ -43,6 +45,7 @@ const {
   measurement,
   order,
   order_detail,
+  wishlist,
 } = db;
 
 // initializing Controllers -> note the lowercase for the first word
@@ -53,10 +56,11 @@ const cuffsController = new CuffsController(cuff);
 const frontsController = new FrontsController(front);
 const pocketsController = new PocketsController(pocket);
 
-const usersController = new UsersController(user, measurement);
+const usersController = new UsersController(user, measurement, wishlist);
 
 const orderController = new OrderController(order, order_detail);
 const orderDetailsController = new OrderDetailsController(order_detail);
+const wishlistsController = new WishlistsController(wishlist);
 
 // inittializing Routers
 const fabricRouter = new FabricsRouter(fabricsController).routes();
@@ -71,6 +75,8 @@ const orderRouter = new OrderRouter(orderController).routes();
 const orderDetailsRouter = new OrderDetailsRouter(
   orderDetailsController
 ).routes();
+
+const wishlistRouter = new WishlistsRouter(wishlistsController).routes();
 
 const PORT = process.env.PORT;
 const app = express();
@@ -91,7 +97,8 @@ app.use("/pockets", pocketRouter);
 
 app.use("/users", userRouter);
 
-app.use("/orders", orderDetailsRouter);
+app.use("/orders", orderRouter);
+app.use("/wishlists", wishlistRouter);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);

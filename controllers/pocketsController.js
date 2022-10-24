@@ -7,13 +7,13 @@ class PockectsController extends BaseController {
 
   // Insert pocket
   async insertOne(req, res) {
-    const { pocket_name, additional_cost, image_one } = req.body;
+    const { pocketName, additionalCost, imageOne } = req.body;
     console.log(req.body);
     try {
       const newPocket = await this.model.create({
-        pocket_name: pocket_name,
-        additional_cost: additional_cost,
-        image_one: image_one,
+        pocketName: pocketName,
+        additionalCost: additionalCost,
+        imageOne: imageOne,
       });
       return res.json(newPocket);
     } catch (err) {

@@ -9,12 +9,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.user);
-      this.belongsToMany(models.fabric, { through: "fabricWishlists" });
-      this.belongsToMany(models.collar, { through: "collarWishlists" });
-      this.belongsToMany(models.cuff, { through: "cuffWishlists" });
-      this.belongsToMany(models.front, { through: "frontWishlists" });
-      this.belongsToMany(models.pocket, { through: "pocketWishlists" });
-      this.belongsToMany(models.back, { through: "backWishlists" });
+      this.hasMany(models.fabric);
+      this.hasMany(models.collar);
+      this.hasMany(models.cuff);
+      this.hasMany(models.front);
+      this.hasMany(models.pocket);
+      this.hasMany(models.back);
+      // this.belongsToMany(models.user, {
+      //   through: "userWishlists",
+      // });
+      // this.belongsToMany(models.fabric, { through: "fabricWishlists" });
+      // this.belongsToMany(models.collar, { through: "collarWishlists" });
+      // this.belongsToMany(models.cuff, { through: "cuffWishlists" });
+      // this.belongsToMany(models.front, { through: "frontWishlists" });
+      // this.belongsToMany(models.pocket, { through: "pocketWishlists" });
+      // this.belongsToMany(models.back, { through: "backWishlists" });
     }
   }
   wishlist.init(
@@ -26,12 +35,12 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      fabric_id: DataTypes.INTEGER,
-      collar_id: DataTypes.INTEGER,
-      cuff_id: DataTypes.INTEGER,
-      front_id: DataTypes.INTEGER,
-      pocket_id: DataTypes.INTEGER,
-      back_id: DataTypes.INTEGER,
+      fabricId: DataTypes.INTEGER,
+      collarId: DataTypes.INTEGER,
+      cuffId: DataTypes.INTEGER,
+      frontId: DataTypes.INTEGER,
+      pocketId: DataTypes.INTEGER,
+      backId: DataTypes.INTEGER,
     },
     {
       sequelize,
