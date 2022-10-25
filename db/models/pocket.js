@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "pocketOrderDetails",
       });
       // this.belongsToMany(models.wishlist, { through: "pocketWishlists" });
-      this.belongsTo(models.wishlist);
-
+      // this.belongsTo(models.wishlist);
     }
   }
   pocket.init(
