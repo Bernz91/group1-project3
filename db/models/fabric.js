@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.order_detail, {
         through: "fabricOrderDetails",
       });
+      this.hasMany(models.wishlist);
       // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
       // this.belongsTo(models.wishlist);
     }
