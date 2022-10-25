@@ -35,6 +35,11 @@ class UsersRouter {
       this.controller.getMeasurements.bind(this.controller)
     );
 
+    router.get(
+      "/:userId/wishlists",
+      this.controller.getAllWishlists.bind(this.controller)
+    );
+
     //insert one size profile
     router.post(
       "/:userId/measurements",

@@ -9,13 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.order_detail);
-      this.belongsTo(models.user)
-      this.belongsTo(models.wishlist)
+      this.belongsTo(models.user);
+      // this.belongsTo(models.wishlist)
     }
   }
   order.init(
     {
-      payment_id: DataTypes.INTEGER,
+      paymentId: DataTypes.INTEGER,
       userId: {
         type: DataTypes.STRING,
         references: {
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       quantity: DataTypes.INTEGER,
       subtotal: DataTypes.INTEGER,
-      shipping_fee: DataTypes.INTEGER,
+      shippingFee: DataTypes.INTEGER,
       total: DataTypes.INTEGER,
       status: DataTypes.STRING,
     },

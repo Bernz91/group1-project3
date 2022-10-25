@@ -2,8 +2,9 @@ const BaseController = require("./baseController");
 const { v4: uuidv4 } = require("uuid");
 
 class UsersController extends BaseController {
-  constructor(model, measurementModel) {
+  constructor(model, measurementModel, wishlistModel) {
     super(model);
+    this.wishlistModel = wishlistModel;
     this.measurementModel = measurementModel;
   }
 
@@ -34,13 +35,29 @@ class UsersController extends BaseController {
     }
   }
 
+  //find all wish lists of a user
+  async getAllWishlists(req, res) {
+    console.log("tried...");
+    const { userId } = req.params;
+    try {
+      const wishes = await this.wishlistModel.findAll({
+        where: {
+          userId: userId,
+        },
+      });
+      return res.json(wishes);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
   // Retrieve specific user measurement
   async getOneMeasurement(req, res) {
     const { userId } = req.params;
     try {
       const userMeasurement = await this.measurementModel.findByPk({
         where: {
-          user_uuid: userId,
+          userId: userId,
         },
       });
       return res.json(userMeasurement);
@@ -55,7 +72,7 @@ class UsersController extends BaseController {
     try {
       const allMeasurements = await this.measurementModel.findAll({
         where: {
-          user_uuid: userId,
+          userId: userId,
         },
       });
       return res.json(allMeasurements);
@@ -66,17 +83,17 @@ class UsersController extends BaseController {
 
   // Edit specific user
   async editUser(req, res) {
-    const { first_name, last_name, phone, shipping_address } = req.body;
+    const { firstName, lastName, phone, shippingAddress } = req.body;
     const { userId } = req.params;
     console.log(req.body);
     try {
       const user = await this.model.findByPk(userId);
 
       user.set({
-        first_name: first_name,
-        last_name: last_name,
+        firstName: firstName,
+        lastName: lastName,
         phone: phone,
-        shipping_address: shipping_address,
+        shippingAddress: shippingAddress,
       });
       await user.save();
       return res.json(user);
@@ -161,18 +178,18 @@ class UsersController extends BaseController {
   async editMeasurement(req, res) {
     const { measurementId } = req.params;
     const {
-      category_by_user,
-      measurement_type,
+      categoryByUser,
+      measurementType,
       collar,
       shoulders,
       chest,
       waist,
-      sleeves_length,
-      sleeves_width,
+      sleevesLength,
+      sleevesWidth,
       elbow,
-      left_cuff,
-      right_cuff,
-      shirt_length,
+      leftCuff,
+      rightCuff,
+      shirtLength,
     } = req.body;
     console.log(req.body);
     try {
@@ -181,18 +198,18 @@ class UsersController extends BaseController {
       );
 
       measurementProfile.set({
-        category_by_user: category_by_user,
-        measurement_type: measurement_type,
+        categoryByUser: categoryByUser,
+        measurementType: measurementType,
         collar: collar,
         shoulders: shoulders,
         chest: chest,
         waist: waist,
-        sleeves_length: sleeves_length,
-        sleeves_width: sleeves_width,
+        sleevesLength: sleevesLength,
+        sleevesWidth: sleevesWidth,
         elbow: elbow,
-        left_cuff: left_cuff,
-        right_cuff: right_cuff,
-        shirt_length: shirt_length,
+        leftCuff: leftCuff,
+        rightCuff: rightCuff,
+        shirtLength: shirtLength,
       });
       await measurementProfile.save();
       return res.json(measurementProfile);

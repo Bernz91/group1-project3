@@ -7,13 +7,13 @@ class CollarsController extends BaseController {
 
   // Insert collar
   async insertOne(req, res) {
-    const { collar_name, additional_cost, image_one } = req.body;
+    const { collarName, additionalCost, imageOne } = req.body;
     console.log(req.body);
     try {
       const newCollar = await this.model.create({
-        collar_name: collar_name,
-        additional_cost: additional_cost,
-        image_one: image_one,
+        collarName: collarName,
+        additionalCost: additionalCost,
+        imageOne: imageOne,
       });
       return res.json(newCollar);
     } catch (err) {

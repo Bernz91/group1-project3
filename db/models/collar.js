@@ -11,14 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.order_detail, {
         through: "collarOrderDetails",
       });
-      this.belongsToMany(models.wishlist, { through: "collarWishlists" });
+      this.hasMany(models.wishlist);
+      // this.belongsToMany(models.wishlist, { through: "collarWishlists" });
+      // this.belongsTo(models.wishlist);
     }
   }
   collar.init(
     {
-      collar_name: DataTypes.STRING,
-      additional_cost: DataTypes.INTEGER,
-      image_one: DataTypes.STRING,
+      collarName: DataTypes.STRING,
+      additionalCost: DataTypes.INTEGER,
+      imageOne: DataTypes.STRING,
     },
     {
       sequelize,

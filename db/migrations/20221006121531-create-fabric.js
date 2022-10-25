@@ -9,16 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      fabric_name: {
+      fabricName: {
         type: Sequelize.STRING,
       },
-      product_quantity: {
+      productQuantity: {
         type: Sequelize.INTEGER,
       },
       description: {
         type: Sequelize.TEXT,
       },
-      selling_price: {
+      sellingPrice: {
         type: Sequelize.INTEGER,
       },
       style: {
@@ -33,10 +33,10 @@ module.exports = {
       pattern: {
         type: Sequelize.STRING,
       },
-      image_one: {
+      imageOne: {
         type: Sequelize.STRING,
       },
-      image_two: {
+      imageTwo: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -47,6 +47,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      // wishlistId: {
+      //   type: Sequelize.STRING,
+      // },
     });
   },
   async down(queryInterface, Sequelize) {

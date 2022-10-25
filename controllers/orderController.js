@@ -9,22 +9,22 @@ class OrderController extends BaseController {
   // Insert new order details
   async insertOne(req, res) {
     const {
-      payment_id,
-      user_uuid,
+      paymentId,
+      userId,
       quantity,
       subtotal,
-      shipping_fee,
+      shippingFee,
       total,
       status,
     } = req.body;
     console.log(req.body);
     try {
       const newOrder = await this.model.create({
-        payment_id: payment_id,
-        user_uuid: user_uuid,
+        paymentId: paymentId,
+        userId: userId,
         quantity: quantity,
         subtotal: subtotal,
-        shipping_fee: shipping_fee,
+        shippingFee: shippingFee,
         total: total,
         status: status,
       });
@@ -37,11 +37,11 @@ class OrderController extends BaseController {
 
   // retrieve all orders for specific userID
   async getAllOrders(req, res) {
-    const { user_uuid } = req.params;
+    const { userId } = req.params;
     try {
       const allOrders = await this.model.findAll({
         where: {
-          user_uuid: user_uuid,
+          userId: userId,
         },
       });
       return res.json(allOrders);
@@ -52,11 +52,11 @@ class OrderController extends BaseController {
 
   // retrieve all order details for specific userID
   async getOneOrderDetail(req, res) {
-    const { order_id } = req.params;
+    const { orderId } = req.params;
     try {
       const orderDetail = await this.order_detailModel.findByPk({
         where: {
-          order_id: order_id,
+          orderId: orderId,
         },
       });
       return res.json(orderDetail);

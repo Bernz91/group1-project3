@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class pocket extends Model {
     /**
@@ -13,16 +11,21 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.order_detail, {
         through: "pocketOrderDetails",
       });
-      this.belongsToMany(models.wishlist, { through: "pocketWishlists" });
+      this.hasMany(models.wishlist);
+      // this.belongsToMany(models.wishlist, { through: "pocketWishlists" });
+      // this.belongsTo(models.wishlist);
     }
   }
-  pocket.init({
-    pocket_name: DataTypes.STRING,
-    additional_cost: DataTypes.INTEGER,
-    image_one: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'pocket',
-  });
+  pocket.init(
+    {
+      pocketName: DataTypes.STRING,
+      additionalCost: DataTypes.INTEGER,
+      imageOne: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "pocket",
+    }
+  );
   return pocket;
 };
