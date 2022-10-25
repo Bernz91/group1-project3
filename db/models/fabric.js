@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "fabricOrderDetails",
       });
       // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
-      this.belongsTo(models.wishlist);
+      // this.hasMany(models.wishlist);
     }
   }
   fabric.init(

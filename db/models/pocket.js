@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "pocketOrderDetails",
       });
       // this.belongsToMany(models.wishlist, { through: "pocketWishlists" });
-      this.belongsTo(models.wishlist);
+      // this.hasMany(models.wishlist);
 
     }
   }

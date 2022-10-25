@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.user);
-      this.hasMany(models.fabric);
-      this.hasMany(models.collar);
-      this.hasMany(models.cuff);
-      this.hasMany(models.front);
-      this.hasMany(models.pocket);
-      this.hasMany(models.back);
+      this.belongsTo(models.fabric);
+      this.belongsTo(models.collar);
+      this.belongsTo(models.cuff);
+      this.belongsTo(models.front);
+      this.belongsTo(models.pocket);
+      this.belongsTo(models.back);
       // this.belongsToMany(models.user, {
       //   through: "userWishlists",
       // });
