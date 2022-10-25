@@ -2,43 +2,57 @@ const express = require("express");
 const router = express.Router();
 
 class UsersRouter {
-  constructor(controller) {
+  constructor(controller, auth) {
     this.controller = controller;
+    this.auth = auth;
   }
   routes() {
-    //get all user
-    router.get("/", this.controller.getAll.bind(this.controller));
-
     //get one user
-    router.get("/:userId", this.controller.getOne.bind(this.controller));
+    router.get(
+      "/:userId",
+      this.auth,
+      this.controller.getOne.bind(this.controller)
+    );
 
     //insert one user
-    router.post("/", this.controller.insertOne.bind(this.controller));
+    router.post(
+      "/",
+      this.auth,
+      this.controller.insertOne.bind(this.controller)
+    );
 
     //edit user
-    router.put("/:userId", this.controller.editUser.bind(this.controller));
+    router.put(
+      "/:userId",
+      this.auth,
+      this.controller.editUser.bind(this.controller)
+    );
 
     //get all size profiles
     router.get(
       "/:userId/measurements",
+      this.auth,
       this.controller.getMeasurements.bind(this.controller)
     );
 
     //insert one size profile
     router.post(
       "/:userId/measurements",
+      this.auth,
       this.controller.insertOneMeasurement.bind(this.controller)
     );
 
     //delete one size profile
     router.delete(
       "/:userId/measurements/:measurementId",
+      this.auth,
       this.controller.deleteOneMeasurement.bind(this.controller)
     );
 
     //edit size profile
     router.put(
       "/:userId/:measurementId",
+      this.auth,
       this.controller.editMeasurement.bind(this.controller)
     );
 
