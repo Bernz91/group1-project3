@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "fabricOrderDetails",
       });
       // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
-      this.belongsTo(models.wishlist);
+      // this.belongsTo(models.wishlist);
     }
   }
   fabric.init(
@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       pattern: DataTypes.ARRAY(DataTypes.STRING),
       imageOne: DataTypes.STRING,
       imageTwo: DataTypes.STRING,
+      // wishlistId: DataTypes.STRING,
     },
     {
       sequelize,

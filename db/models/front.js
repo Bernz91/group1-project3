@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "frontOrderDetails",
       });
       // this.belongsToMany(models.wishlist, { through: "frontWishlists" });
-      this.belongsTo(models.wishlist);
-
+      // this.belongsTo(models.wishlist);
     }
   }
   front.init(
