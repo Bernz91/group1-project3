@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   back.init(
     {
       backName: DataTypes.STRING,
-      additionalCost: DataTypes.INTEGER,
+      cost: DataTypes.INTEGER,
       imageOne: DataTypes.STRING,
     },
     {

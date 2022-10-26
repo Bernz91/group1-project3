@@ -11,7 +11,7 @@ module.exports = {
           productQuantity: 10,
           description:
             "Looser weave, lighter in weight but not to the point that structure is compromised.",
-          sellingPrice: 189,
+          cost: 189,
           style: ["Casual", "Smart Casual"],
           colour: ["Blue", "White"],
           material: ["100% Cotton", "Cotton"],
@@ -28,7 +28,7 @@ module.exports = {
           productQuantity: 15,
           description:
             "Looser weave, lighter in weight but not to the point that structure is compromised.",
-          sellingPrice: 189,
+          cost: 189,
           style: ["Casual", "Smart Casual"],
           colour: ["Green", "White"],
           material: ["100% Cotton", "Cotton"],

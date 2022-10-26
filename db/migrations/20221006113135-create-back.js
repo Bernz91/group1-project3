@@ -12,7 +12,7 @@ module.exports = {
       backName: {
         type: Sequelize.STRING,
       },
-      additionalCost: {
+      cost: {
         type: Sequelize.INTEGER,
       },
       imageOne: {

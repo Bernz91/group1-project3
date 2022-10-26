@@ -8,7 +8,7 @@ module.exports = {
       [
         {
           frontName: "Clean",
-          additionalCost: 0,
+          cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/ebf8b659/6d92bc0c9cacc702b00d6f34b90fe2bd/clean.jpg",
           createdAt: new Date(),
@@ -16,7 +16,7 @@ module.exports = {
         },
         {
           frontName: "Placket",
-          additionalCost: 0,
+          cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/bfeffd08/03b3291f70c63101cfb4d771b39ea415/placket.jpg",
           createdAt: new Date(),
@@ -24,7 +24,7 @@ module.exports = {
         },
         {
           frontName: "Popover",
-          additionalCost: 15,
+          cost: 15,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/1ecXAqa0TQW3JZXFjL38dK/f72cdff623ac7b0c31a883319bd7ea0e/Popover.png",
           createdAt: new Date(),

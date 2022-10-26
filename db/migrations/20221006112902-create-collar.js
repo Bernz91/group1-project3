@@ -12,7 +12,7 @@ module.exports = {
       collarName: {
         type: Sequelize.STRING,
       },
-      additionalCost: {
+      cost: {
         type: Sequelize.INTEGER,
       },
       imageOne: {
