@@ -68,7 +68,7 @@ const usersController = new UsersController(
   pocket
 );
 
-const orderController = new OrderController(order, order_detail);
+const orderController = new OrderController(order, user, order_detail);
 const orderDetailsController = new OrderDetailsController(order_detail);
 const wishlistsController = new WishlistsController(wishlist);
 
