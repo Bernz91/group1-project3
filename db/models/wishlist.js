@@ -15,15 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.front);
       this.belongsTo(models.pocket);
       this.belongsTo(models.back);
-      // this.belongsToMany(models.user, {
-      //   through: "userWishlists",
-      // });
-      // this.belongsToMany(models.fabric, { through: "fabricWishlists" });
-      // this.belongsToMany(models.collar, { through: "collarWishlists" });
-      // this.belongsToMany(models.cuff, { through: "cuffWishlists" });
-      // this.belongsToMany(models.front, { through: "frontWishlists" });
-      // this.belongsToMany(models.pocket, { through: "pocketWishlists" });
-      // this.belongsToMany(models.back, { through: "backWishlists" });
     }
   }
   wishlist.init(
@@ -35,17 +26,52 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      fabricId: DataTypes.INTEGER,
-      collarId: DataTypes.INTEGER,
-      cuffId: DataTypes.INTEGER,
-      frontId: DataTypes.INTEGER,
-      pocketId: DataTypes.INTEGER,
-      backId: DataTypes.INTEGER,
+      fabricId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "fabrics",
+          key: "id",
+        },
+      },
+      collarId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "collars",
+          key: "id",
+        },
+      },
+      cuffId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "cuffs",
+          key: "id",
+        },
+      },
+      frontId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "fronts",
+          key: "id",
+        },
+      },
+      pocketId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "pockets",
+          key: "id",
+        },
+      },
+      backId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "backs",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,
       modelName: "wishlist",
-      // underscored: true,
     }
   );
   return wishlist;

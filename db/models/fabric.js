@@ -3,12 +3,9 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class fabric extends Model {
     static associate(models) {
-      this.belongsToMany(models.order_detail, {
-        through: "fabricOrderDetails",
-      });
-      this.hasMany(models.wishlist);
-      // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
-      // this.belongsTo(models.wishlist);
+      // this.belongsToMany(models.order_detail, {
+      //   through: "fabricOrderDetails",
+      // });
     }
   }
   fabric.init(

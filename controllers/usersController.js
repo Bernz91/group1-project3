@@ -4,8 +4,8 @@ const { v4: uuidv4 } = require("uuid");
 class UsersController extends BaseController {
   constructor(model, measurementModel, wishlistModel) {
     super(model);
-    this.wishlistModel = wishlistModel;
     this.measurementModel = measurementModel;
+    this.wishlistModel = wishlistModel;
   }
 
   // Insert user

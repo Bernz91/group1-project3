@@ -8,28 +8,32 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // this.belongsToMany(models.back, {
-      //   through: "backOrderDetails",
-      // });
-      // this.belongsToMany(models.collar, { through: "collarOrderDetails" });
-      // this.belongsToMany(models.cuff, {
-      //   through: "cuffOrderDetails",
-      // });
-      // this.belongsToMany(models.fabric, { through: "fabricOrderDetails" });
-      // this.belongsToMany(models.front, {
-      //   through: "frontOrderDetails",
-      // });
-      // this.belongsToMany(models.pocket, {
-      //   through: "pocketOrderDetails",
-      // });
-      // this.hasMany(models.order);
-      // this.hasMany(models.measurement);
+      this.belongsTo(models.order);
+      this.belongsTo(models.measurement);
+      this.belongsTo(models.fabric);
+      this.belongsTo(models.collar);
+      this.belongsTo(models.cuff);
+      this.belongsTo(models.front);
+      this.belongsTo(models.pocket);
+      this.belongsTo(models.back);
     }
   }
   order_detail.init(
     {
-      orderId: DataTypes.INTEGER,
-      measurementId: DataTypes.INTEGER,
+      orderId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "orders",
+          key: "id",
+        },
+      },
+      measurementId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "measurements",
+          key: "id",
+        },
+      },
       fabricId: {
         type: DataTypes.INTEGER,
         references: {
@@ -44,10 +48,34 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      cuffId: DataTypes.INTEGER,
-      frontId: DataTypes.INTEGER,
-      pocketId: DataTypes.INTEGER,
-      backId: DataTypes.INTEGER,
+      cuffId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "cuffs",
+          key: "id",
+        },
+      },
+      frontId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "fronts",
+          key: "id",
+        },
+      },
+      pocketId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "pockets",
+          key: "id",
+        },
+      },
+      backId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "backs",
+          key: "id",
+        },
+      },
       quantity: DataTypes.INTEGER,
       singleprice: DataTypes.INTEGER,
       totalprice: DataTypes.INTEGER,
@@ -55,7 +83,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "order_detail",
-      // underscored: true,
     }
   );
   return order_detail;

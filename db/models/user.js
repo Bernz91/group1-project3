@@ -9,9 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.measurement);
-      // this.belongsToMany(models.wishlist, {
-      //   through: "userWishlists",
-      // });
       this.hasMany(models.wishlist);
       this.hasMany(models.order);
     }
