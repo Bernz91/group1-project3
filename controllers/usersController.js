@@ -68,7 +68,7 @@ class UsersController extends BaseController {
   // }
 
   async getAllWishlists(req, res) {
-    console.log("tried...");
+    // console.log("tried...");
     const { userId } = req.params;
     try {
       const wishes = await this.wishlistModel.findAll({
@@ -84,6 +84,22 @@ class UsersController extends BaseController {
       });
       console.log(wishes);
       return res.json(wishes);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete wishlist for specific user
+  async deleteOneWishlist(req, res) {
+    const { userId, wishlistId } = req.params;
+    try {
+      const deletedWishlist = await this.wishlistModel.destroy({
+        where: {
+          id: wishlistId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedWishlist);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

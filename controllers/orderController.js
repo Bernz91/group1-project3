@@ -17,6 +17,7 @@ class OrderController extends BaseController {
       shippingFee,
       total,
       status,
+      shippingAddress,
     } = req.body;
 
     console.log(req.body);
@@ -30,6 +31,7 @@ class OrderController extends BaseController {
         shippingFee: shippingFee,
         total: total,
         status: status,
+        shippingAddress: shippingAddress,
       });
       return res.json(newOrder);
     } catch (err) {

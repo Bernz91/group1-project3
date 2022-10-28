@@ -29,11 +29,11 @@ class UsersRouter {
       this.controller.getAllWishlists.bind(this.controller)
     );
 
-    // // get all orders of a user
-    // router.get(
-    //   "/:userId/orders",
-    //   this.controller.getAllOrders.bind(this.controller)
-    // );
+     //delete user wishlist
+     router.delete(
+      "/:userId/wishlists/:wishlistId",
+      this.controller.deleteOneWishlist.bind(this.controller)
+    );
 
     //insert one size profile
     router.post(
