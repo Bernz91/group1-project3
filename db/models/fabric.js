@@ -3,11 +3,9 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class fabric extends Model {
     static associate(models) {
-      this.belongsToMany(models.order_detail, {
-        through: "fabricOrderDetails",
-      });
-      // this.belongsToMany(models.wishlist, { through: "fabricWishlists" });
-      // this.hasMany(models.wishlist);
+      // this.belongsToMany(models.order_detail, {
+      //   through: "fabricOrderDetails",
+      // });
     }
   }
   fabric.init(
@@ -22,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       pattern: DataTypes.ARRAY(DataTypes.STRING),
       imageOne: DataTypes.STRING,
       imageTwo: DataTypes.STRING,
+      // wishlistId: DataTypes.STRING,
     },
     {
       sequelize,

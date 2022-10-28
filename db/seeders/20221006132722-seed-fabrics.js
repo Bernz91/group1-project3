@@ -22,6 +22,7 @@ module.exports = {
             "https://www.editsuits.com/wp-content/uploads/2020/05/ES_BC_N464A_2-scaled.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
+          // wishlistId: "Testing",
         },
         {
           fabricName: "Dark Green Wide Block Stripes Shirt",
@@ -39,6 +40,7 @@ module.exports = {
             "https://i.ebayimg.com/images/g/I0kAAOSwEldgjMuR/s-l1600.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
+          // wishlistId: "Testing",
         },
       ],
       {}

@@ -20,8 +20,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   order_detail.init(
     {
-      orderId: DataTypes.INTEGER,
-      measurementId: DataTypes.INTEGER,
+      orderId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "orders",
+          key: "id",
+        },
+      },
+      measurementId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "measurements",
+          key: "id",
+        },
+      },
       fabricId: {
         type: DataTypes.INTEGER,
         references: {
@@ -36,10 +48,34 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      cuffId: DataTypes.INTEGER,
-      frontId: DataTypes.INTEGER,
-      pocketId: DataTypes.INTEGER,
-      backId: DataTypes.INTEGER,
+      cuffId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "cuffs",
+          key: "id",
+        },
+      },
+      frontId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "fronts",
+          key: "id",
+        },
+      },
+      pocketId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "pockets",
+          key: "id",
+        },
+      },
+      backId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "backs",
+          key: "id",
+        },
+      },
       quantity: DataTypes.INTEGER,
       singleprice: DataTypes.INTEGER,
       totalprice: DataTypes.INTEGER,
@@ -47,7 +83,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "order_detail",
-      // underscored: true,
     }
   );
   return order_detail;

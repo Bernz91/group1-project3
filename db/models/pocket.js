@@ -8,12 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsToMany(models.order_detail, {
-        through: "pocketOrderDetails",
-      });
-      // this.belongsToMany(models.wishlist, { through: "pocketWishlists" });
-      // this.hasMany(models.wishlist);
-
+      // this.belongsToMany(models.order_detail, {
+      //   through: "pocketOrderDetails",
+      // });
     }
   }
   pocket.init(

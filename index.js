@@ -80,7 +80,7 @@ const cuffRouter = new CuffsRouter(cuffsController).routes();
 const frontRouter = new FrontsRouter(frontsController).routes();
 const pocketRouter = new PocketsRouter(pocketsController).routes();
 
-const userRouter = new UsersRouter(usersController).routes();
+const userRouter = new UsersRouter(usersController, auth).routes();
 const orderRouter = new OrderRouter(orderController).routes();
 const orderDetailsRouter = new OrderDetailsRouter(
   orderDetailsController

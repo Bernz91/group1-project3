@@ -15,7 +15,6 @@ class UsersController extends BaseController {
     pocketModel
   ) {
     super(model);
-    this.wishlistModel = wishlistModel;
     this.measurementModel = measurementModel;
     this.fabricModel = fabricModel;
     this.cuffModel = cuffModel;
