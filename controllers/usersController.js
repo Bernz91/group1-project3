@@ -1,11 +1,27 @@
 const BaseController = require("./baseController");
 const { v4: uuidv4 } = require("uuid");
+const fabric = require("../db/models/fabric");
 
 class UsersController extends BaseController {
-  constructor(model, measurementModel, wishlistModel) {
+  constructor(
+    model,
+    measurementModel,
+    wishlistModel,
+    fabricModel,
+    cuffModel,
+    collarModel,
+    backModel,
+    frontModel,
+    pocketModel
+  ) {
     super(model);
     this.measurementModel = measurementModel;
-    this.wishlistModel = wishlistModel;
+    this.fabricModel = fabricModel;
+    this.cuffModel = cuffModel;
+    this.collarModel = collarModel;
+    this.backModel = backModel;
+    this.frontModel = frontModel;
+    this.pocketModel = pocketModel;
   }
 
   // Insert user
@@ -36,16 +52,53 @@ class UsersController extends BaseController {
   }
 
   //find all wish lists of a user
+  // async getAllWishlists(req, res) {
+  //   console.log("tried...");
+  //   const { userId } = req.params;
+  //   try {
+  //     const wishes = await this.wishlistModel.findAll({
+  //       where: { userId: userId },
+  //     });
+  //     console.log(wishes);
+  //     return res.json(wishes);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
+
   async getAllWishlists(req, res) {
-    console.log("tried...");
+    // console.log("tried...");
     const { userId } = req.params;
     try {
       const wishes = await this.wishlistModel.findAll({
+        where: { userId: userId },
+        include: [
+          this.fabricModel,
+          this.cuffModel,
+          this.collarModel,
+          this.backModel,
+          this.frontModel,
+          this.pocketModel,
+        ],
+      });
+      console.log(wishes);
+      return res.json(wishes);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete wishlist for specific user
+  async deleteOneWishlist(req, res) {
+    const { userId, wishlistId } = req.params;
+    try {
+      const deletedWishlist = await this.wishlistModel.destroy({
         where: {
+          id: wishlistId,
           userId: userId,
         },
       });
-      return res.json(wishes);
+      return res.json(deletedWishlist);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

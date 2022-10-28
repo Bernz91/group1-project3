@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   collar.init(
     {
       collarName: DataTypes.STRING,
-      additionalCost: DataTypes.INTEGER,
+      cost: DataTypes.INTEGER,
       imageOne: DataTypes.STRING,
     },
     {

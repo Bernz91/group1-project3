@@ -1,8 +1,9 @@
 const BaseController = require("./baseController");
 
 class OrderController extends BaseController {
-  constructor(model, order_detailModel) {
+  constructor(model, userModel, order_detailModel) {
     super(model);
+    this.userModel = userModel;
     this.order_detailModel = order_detailModel;
   }
 
@@ -16,8 +17,11 @@ class OrderController extends BaseController {
       shippingFee,
       total,
       status,
+      shippingAddress,
     } = req.body;
+
     console.log(req.body);
+
     try {
       const newOrder = await this.model.create({
         paymentId: paymentId,
@@ -27,6 +31,7 @@ class OrderController extends BaseController {
         shippingFee: shippingFee,
         total: total,
         status: status,
+        shippingAddress: shippingAddress,
       });
       return res.json(newOrder);
     } catch (err) {
@@ -38,11 +43,13 @@ class OrderController extends BaseController {
   // retrieve all orders for specific userID
   async getAllOrders(req, res) {
     const { userId } = req.params;
+    console.log("tried");
     try {
       const allOrders = await this.model.findAll({
         where: {
           userId: userId,
         },
+        include: [this.order_detailModel],
       });
       return res.json(allOrders);
     } catch (err) {
@@ -61,6 +68,40 @@ class OrderController extends BaseController {
       });
       return res.json(orderDetail);
     } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  async insertOrderDetail(req, res) {
+    const { orderId } = req.params;
+    const {
+      fabricId,
+      collarId,
+      cuffId,
+      frontId,
+      pocketId,
+      backId,
+      quantity,
+      singleprice,
+      totalprice,
+    } = req.body;
+    console.log(req.body);
+    try {
+      const newOrderDetail = await this.order_detailModel.create({
+        orderId: orderId,
+        fabricId: fabricId,
+        collarId: collarId,
+        cuffId: cuffId,
+        frontId: frontId,
+        pocketId: pocketId,
+        backId: backId,
+        quantity: quantity,
+        singleprice: singleprice,
+        totalprice: totalprice,
+      });
+      return res.json(newOrderDetail);
+    } catch (err) {
+      console.log(err);
       return res.status(400).json({ error: true, msg: err });
     }
   }

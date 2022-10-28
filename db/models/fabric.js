@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       fabricName: DataTypes.STRING,
       productQuantity: DataTypes.INTEGER,
       description: DataTypes.TEXT,
-      sellingPrice: DataTypes.INTEGER,
+      cost: DataTypes.INTEGER,
       style: DataTypes.ARRAY(DataTypes.STRING),
       colour: DataTypes.ARRAY(DataTypes.STRING),
       material: DataTypes.ARRAY(DataTypes.STRING),

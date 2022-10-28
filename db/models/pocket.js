@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   pocket.init(
     {
       pocketName: DataTypes.STRING,
-      additionalCost: DataTypes.INTEGER,
+      cost: DataTypes.INTEGER,
       imageOne: DataTypes.STRING,
     },
     {

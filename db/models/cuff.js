@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   cuff.init(
     {
       cuffName: DataTypes.STRING,
-      additionalCost: DataTypes.INTEGER,
+      cost: DataTypes.INTEGER,
       imageOne: DataTypes.STRING,
     },
 

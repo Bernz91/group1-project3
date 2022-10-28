@@ -17,6 +17,7 @@ module.exports = {
           shippingFee: 25,
           total: 250,
           status: "shipped",
+          shippingAddress: "845C Woodlands Drive 50 Singapore 640464",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

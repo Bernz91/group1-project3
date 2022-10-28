@@ -13,15 +13,17 @@ class OrderRouter {
     // router.get("/:orderId", this.controller.getOne.bind(this.controller));
 
     //get all orders associated with this user
-    router.get(
-      "/orders/:userId",
-      this.controller.getAllOrders.bind(this.controller)
-    );
+    router.get("/:userId", this.controller.getAllOrders.bind(this.controller));
 
     //get specific order details from orderDetailmodel
-    router.get(
-      "/orders/:orderId",
-      this.controller.getOneOrderDetail.bind(this.controller)
+    // router.get(
+    //   "/:userId/:orderId/orderDetails",
+    //   this.controller.getAllOrderDetails.bind(this.controller)
+    // );
+
+    router.post(
+      "/:orderId/orderDetails",
+      this.controller.insertOrderDetail.bind(this.controller)
     );
 
     //insert one

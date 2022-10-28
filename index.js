@@ -56,9 +56,19 @@ const cuffsController = new CuffsController(cuff);
 const frontsController = new FrontsController(front);
 const pocketsController = new PocketsController(pocket);
 
-const usersController = new UsersController(user, measurement, wishlist);
+const usersController = new UsersController(
+  user,
+  measurement,
+  wishlist,
+  fabric,
+  cuff,
+  collar,
+  back,
+  front,
+  pocket
+);
 
-const orderController = new OrderController(order, order_detail);
+const orderController = new OrderController(order, user, order_detail);
 const orderDetailsController = new OrderDetailsController(order_detail);
 const wishlistsController = new WishlistsController(wishlist);
 

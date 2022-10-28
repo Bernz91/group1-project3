@@ -8,7 +8,7 @@ module.exports = {
       [
         {
           collarName: "Classic",
-          additionalCost: 0,
+          cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/1df08a4f/686d71e43e1f39aefc6de6bb70d28c1c/classic.jpg",
           createdAt: new Date(),
@@ -16,7 +16,7 @@ module.exports = {
         },
         {
           collarName: "Spread",
-          additionalCost: 0,
+          cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/5qFcWA5xo0wE7QAQNTNJnN/fe45360e3a2d423f2decd829351ceecc/Spread-_new__illustration.png",
           createdAt: new Date(),
@@ -24,7 +24,7 @@ module.exports = {
         },
         {
           collarName: "Cutaway",
-          additionalCost: 0,
+          cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/dcbaf01b/942cfcabfdf768e0ba75cb79f143bffc/cutaway.jpg",
           createdAt: new Date(),
