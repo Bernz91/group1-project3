@@ -22,6 +22,7 @@ class UsersController extends BaseController {
     this.backModel = backModel;
     this.frontModel = frontModel;
     this.pocketModel = pocketModel;
+    this.wishlistModel = wishlistModel;
   }
 
   // Insert user
@@ -67,7 +68,7 @@ class UsersController extends BaseController {
   // }
 
   async getAllWishlists(req, res) {
-    // console.log("tried...");
+    console.log("tried...");
     const { userId } = req.params;
     try {
       const wishes = await this.wishlistModel.findAll({
@@ -99,6 +100,20 @@ class UsersController extends BaseController {
         },
       });
       return res.json(deletedWishlist);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  async deleteAllWishlist(req, res) {
+    const { userId } = req.params;
+    try {
+      const deletedWishlists = await this.wishlistModel.destroy({
+        where: {
+          userId: userId,
+        },
+      });
+      return res.json(deletedWishlists);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

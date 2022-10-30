@@ -1,10 +1,26 @@
 const BaseController = require("./baseController");
 
 class OrderController extends BaseController {
-  constructor(model, userModel, order_detailModel) {
+  constructor(
+    model,
+    userModel,
+    order_detailModel,
+    fabricModel,
+    cuffModel,
+    collarModel,
+    backModel,
+    frontModel,
+    pocketModel
+  ) {
     super(model);
     this.userModel = userModel;
     this.order_detailModel = order_detailModel;
+    this.fabricModel = fabricModel;
+    this.cuffModel = cuffModel;
+    this.collarModel = collarModel;
+    this.backModel = backModel;
+    this.frontModel = frontModel;
+    this.pocketModel = pocketModel;
   }
 
   // Insert new order details
@@ -49,7 +65,19 @@ class OrderController extends BaseController {
         where: {
           userId: userId,
         },
-        include: [this.order_detailModel],
+        include: [
+          {
+            model: this.order_detailModel,
+            include: [
+              this.fabricModel,
+              this.cuffModel,
+              this.collarModel,
+              this.backModel,
+              this.frontModel,
+              this.pocketModel,
+            ],
+          },
+        ],
       });
       return res.json(allOrders);
     } catch (err) {

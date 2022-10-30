@@ -37,13 +37,20 @@ class UsersRouter {
 
     router.get(
       "/:userId/wishlists",
+      // this.auth,
       this.controller.getAllWishlists.bind(this.controller)
     );
 
-     //delete user wishlist
-     router.delete(
+    //delete a user wishlist
+    router.delete(
       "/:userId/wishlists/:wishlistId",
       this.controller.deleteOneWishlist.bind(this.controller)
+    );
+
+    //delete a user all wishlists
+    router.delete(
+      "/:userId/wishlists/",
+      this.controller.deleteAllWishlist.bind(this.controller)
     );
 
     //insert one size profile
