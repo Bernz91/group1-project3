@@ -9,7 +9,7 @@ module.exports = {
       "wishlists",
       [
         {
-          userId: userId[0][0].id,
+          userId: "3bab595a-78a4-48f6-b093-eea8726a796e",
           fabricId: 1,
           collarId: 1,
           cuffId: 1,
@@ -20,7 +20,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: userId[0][0].id,
+          userId: "3bab595a-78a4-48f6-b093-eea8726a796e",
           fabricId: 2,
           collarId: 2,
           cuffId: 2,
