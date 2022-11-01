@@ -31,7 +31,7 @@ class UsersRouter {
     //get all size profiles
     router.get(
       "/:userId/measurements",
-      this.auth,
+      // this.auth,
       this.controller.getMeasurements.bind(this.controller)
     );
 
