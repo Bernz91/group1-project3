@@ -68,7 +68,17 @@ const usersController = new UsersController(
   pocket
 );
 
-const orderController = new OrderController(order, user, order_detail);
+const orderController = new OrderController(
+  order,
+  user,
+  order_detail,
+  fabric,
+  cuff,
+  collar,
+  back,
+  front,
+  pocket
+);
 const orderDetailsController = new OrderDetailsController(order_detail);
 const wishlistsController = new WishlistsController(wishlist);
 
@@ -81,6 +91,8 @@ const frontRouter = new FrontsRouter(frontsController).routes();
 const pocketRouter = new PocketsRouter(pocketsController).routes();
 
 const userRouter = new UsersRouter(usersController, auth).routes();
+// const userRouter = new UsersRouter(usersController).routes();
+
 const orderRouter = new OrderRouter(orderController).routes();
 const orderDetailsRouter = new OrderDetailsRouter(
   orderDetailsController
