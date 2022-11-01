@@ -47,6 +47,12 @@ class UsersRouter {
       this.controller.deleteOneWishlist.bind(this.controller)
     );
 
+    //edit a user wishlist
+    router.put(
+      "/:userId/wishlists/:wishlistId",
+      this.controller.editOneWishlist.bind(this.controller)
+    );
+
     //delete a user all wishlists
     router.delete(
       "/:userId/wishlists/",
