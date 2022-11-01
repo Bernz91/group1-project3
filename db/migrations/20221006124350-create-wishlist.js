@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       userId: {
+        allowNull: false,
         type: Sequelize.STRING,
         references: {
           model: "users",
@@ -17,6 +18,7 @@ module.exports = {
         },
       },
       fabricId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "fabrics",
@@ -24,6 +26,8 @@ module.exports = {
         },
       },
       collarId: {
+        allowNull: false,
+
         type: Sequelize.INTEGER,
         references: {
           model: "collars",
@@ -31,6 +35,8 @@ module.exports = {
         },
       },
       cuffId: {
+        allowNull: false,
+
         type: Sequelize.INTEGER,
         references: {
           model: "cuffs",
@@ -38,6 +44,8 @@ module.exports = {
         },
       },
       frontId: {
+        allowNull: false,
+
         type: Sequelize.INTEGER,
         references: {
           model: "fronts",
@@ -45,6 +53,8 @@ module.exports = {
         },
       },
       pocketId: {
+        allowNull: false,
+
         type: Sequelize.INTEGER,
         references: {
           model: "pockets",
@@ -52,6 +62,8 @@ module.exports = {
         },
       },
       backId: {
+        allowNull: false,
+
         type: Sequelize.INTEGER,
         references: {
           model: "backs",
