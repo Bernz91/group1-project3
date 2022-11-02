@@ -7,8 +7,16 @@ class WishlistController extends BaseController {
 
   // Insert new wishlist detail
   async insertOne(req, res) {
-    const { userId, fabricId, collarId, cuffId, frontId, pocketId, backId } =
-      req.body;
+    const {
+      userId,
+      fabricId,
+      collarId,
+      cuffId,
+      frontId,
+      pocketId,
+      backId,
+      measurementId,
+    } = req.body;
     console.log(req.body);
     try {
       const newWishlist = await this.model.create({
@@ -19,6 +27,7 @@ class WishlistController extends BaseController {
         frontId: frontId,
         pocketId: pocketId,
         backId: backId,
+        measurementId: measurementId,
       });
       return res.json(newWishlist);
     } catch (err) {
