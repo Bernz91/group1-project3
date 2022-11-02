@@ -70,6 +70,13 @@ module.exports = {
           key: "id",
         },
       },
+      measurementId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "measurements",
+          key: "id",
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

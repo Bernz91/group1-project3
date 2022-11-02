@@ -80,6 +80,7 @@ class UsersController extends BaseController {
           this.backModel,
           this.frontModel,
           this.pocketModel,
+          this.measurementModel,
         ],
       });
       console.log(wishes);
@@ -114,6 +115,24 @@ class UsersController extends BaseController {
         },
       });
       return res.json(deletedWishlists);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //edit one's wishlist
+  async editOneWishlist(req, res) {
+    const { measurementId } = req.body;
+    const { userId } = req.params;
+    console.log(req.body);
+    try {
+      const user = await this.wishlistModel.findByPk(userId);
+
+      user.set({
+        measurementId: measurementId,
+      });
+      await user.save();
+      return res.json(user);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

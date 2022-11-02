@@ -71,6 +71,7 @@ const usersController = new UsersController(
 const orderController = new OrderController(
   order,
   user,
+  measurement,
   order_detail,
   fabric,
   cuff,

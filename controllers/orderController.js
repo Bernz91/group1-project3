@@ -4,6 +4,7 @@ class OrderController extends BaseController {
   constructor(
     model,
     userModel,
+    measurementModel,
     order_detailModel,
     fabricModel,
     cuffModel,
@@ -14,6 +15,7 @@ class OrderController extends BaseController {
   ) {
     super(model);
     this.userModel = userModel;
+    this.measurementModel = measurementModel;
     this.order_detailModel = order_detailModel;
     this.fabricModel = fabricModel;
     this.cuffModel = cuffModel;
@@ -75,8 +77,10 @@ class OrderController extends BaseController {
               this.backModel,
               this.frontModel,
               this.pocketModel,
+              this.measurementModel,
             ],
           },
+          // { model: this.measurementModel },
         ],
       });
       return res.json(allOrders);
@@ -103,6 +107,7 @@ class OrderController extends BaseController {
   async insertOrderDetail(req, res) {
     const { orderId } = req.params;
     const {
+      measurementId,
       fabricId,
       collarId,
       cuffId,
@@ -117,6 +122,7 @@ class OrderController extends BaseController {
     try {
       const newOrderDetail = await this.order_detailModel.create({
         orderId: orderId,
+        measurementId: measurementId,
         fabricId: fabricId,
         collarId: collarId,
         cuffId: cuffId,

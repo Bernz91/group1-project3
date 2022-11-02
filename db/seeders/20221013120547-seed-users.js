@@ -9,10 +9,10 @@ module.exports = {
       "users",
       [
         {
-          id: uuidv4(),
-          firstName: "user1",
-          lastName: "user1",
-          email: "test1@mail.com",
+          id: "3bab595a-78a4-48f6-b093-eea8726a796e",
+          firstName: "Zihao",
+          lastName: "Huat",
+          email: "huat@gmail.com",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

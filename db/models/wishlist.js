@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.front);
       this.belongsTo(models.pocket);
       this.belongsTo(models.back);
+      this.belongsTo(models.measurement);
     }
   }
   wishlist.init(
@@ -65,6 +66,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         references: {
           model: "backs",
+          key: "id",
+        },
+      },
+      measurementId: {
+        type: DataTypes.STRING,
+        references: {
+          model: "measurements",
           key: "id",
         },
       },
