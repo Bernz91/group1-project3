@@ -107,6 +107,7 @@ class OrderController extends BaseController {
   async insertOrderDetail(req, res) {
     const { orderId } = req.params;
     const {
+      measurementId,
       fabricId,
       collarId,
       cuffId,
