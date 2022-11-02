@@ -94,7 +94,7 @@ const pocketRouter = new PocketsRouter(pocketsController).routes();
 const userRouter = new UsersRouter(usersController, auth).routes();
 // const userRouter = new UsersRouter(usersController).routes();
 
-const orderRouter = new OrderRouter(orderController).routes();
+const orderRouter = new OrderRouter(orderController, auth).routes();
 const orderDetailsRouter = new OrderDetailsRouter(
   orderDetailsController
 ).routes();

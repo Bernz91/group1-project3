@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 class OrderRouter {
-  constructor(controller) {
+  constructor(controller, auth) {
     this.controller = controller;
+    this.auth = auth;
   }
   routes() {
     //get all

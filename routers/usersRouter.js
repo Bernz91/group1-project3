@@ -31,19 +31,20 @@ class UsersRouter {
     //get all size profiles
     router.get(
       "/:userId/measurements",
-      // this.auth,
+      this.auth,
       this.controller.getMeasurements.bind(this.controller)
     );
 
     router.get(
       "/:userId/wishlists",
-      // this.auth,
+      this.auth,
       this.controller.getAllWishlists.bind(this.controller)
     );
 
     //delete a user wishlist
     router.delete(
       "/:userId/wishlists/:wishlistId",
+      this.auth,
       this.controller.deleteOneWishlist.bind(this.controller)
     );
 
@@ -56,6 +57,7 @@ class UsersRouter {
     //delete a user all wishlists
     router.delete(
       "/:userId/wishlists/",
+      this.auth,
       this.controller.deleteAllWishlist.bind(this.controller)
     );
 
