@@ -23,7 +23,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          cuffName: "Round Frecnh",
+          cuffName: "Round French",
           cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/cc5f7296/914ee4a1110d5ecf6bfec45a8f775289/roundfrench.jpg",

@@ -15,7 +15,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          pocketName: "Single Rounded Plain (no flap)",
+          pocketName: "No flap",
           cost: 0,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/2U7LVLVnA8Ri5hMjp6dkwd/718272fa28266ce224ca764a05a048a6/2._Single_Rounded_Plain.png",
@@ -23,7 +23,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          pocketName: "Single Angled Plain (with flap)",
+          pocketName: "With flap",
           cost: 12,
           imageOne:
             "https://images.ctfassets.net/3aeub7qedhiv/1P1cgs7gEwFdWkGSN746vi/49b7d8594af8a8d59e7ea469a1206224/3._Single_Angled_Plain.png",
