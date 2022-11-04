@@ -12,7 +12,8 @@ class UsersController extends BaseController {
     collarModel,
     backModel,
     frontModel,
-    pocketModel
+    pocketModel,
+    shoppingCartModel
   ) {
     super(model);
     this.measurementModel = measurementModel;
@@ -23,6 +24,7 @@ class UsersController extends BaseController {
     this.frontModel = frontModel;
     this.pocketModel = pocketModel;
     this.wishlistModel = wishlistModel;
+    this.shoppingCartModel = shoppingCartModel;
   }
 
   // Insert user
@@ -66,107 +68,6 @@ class UsersController extends BaseController {
   //     return res.status(400).json({ error: true, msg: err });
   //   }
   // }
-
-  async getAllWishlists(req, res) {
-    console.log("tried...");
-    const { userId } = req.params;
-    try {
-      const wishes = await this.wishlistModel.findAll({
-        where: { userId: userId },
-        include: [
-          this.fabricModel,
-          this.cuffModel,
-          this.collarModel,
-          this.backModel,
-          this.frontModel,
-          this.pocketModel,
-          this.measurementModel,
-        ],
-      });
-      console.log(wishes);
-      return res.json(wishes);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  // Delete wishlist for specific user
-  async deleteOneWishlist(req, res) {
-    const { userId, wishlistId } = req.params;
-    try {
-      const deletedWishlist = await this.wishlistModel.destroy({
-        where: {
-          id: wishlistId,
-          userId: userId,
-        },
-      });
-      return res.json(deletedWishlist);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  async deleteAllWishlist(req, res) {
-    const { userId } = req.params;
-    try {
-      const deletedWishlists = await this.wishlistModel.destroy({
-        where: {
-          userId: userId,
-        },
-      });
-      return res.json(deletedWishlists);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  //edit one's wishlist
-  async editOneWishlist(req, res) {
-    const { measurementId } = req.body;
-    const { userId } = req.params;
-    console.log(req.body);
-    try {
-      const user = await this.wishlistModel.findByPk(userId);
-
-      user.set({
-        measurementId: measurementId,
-      });
-      await user.save();
-      return res.json(user);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  // Retrieve specific user measurement
-  async getOneMeasurement(req, res) {
-    const { userId } = req.params;
-    try {
-      const userMeasurement = await this.measurementModel.findByPk({
-        where: {
-          userId: userId,
-        },
-      });
-      return res.json(userMeasurement);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  // Retrieve specific user measurement
-  async getAllMeasurements(req, res) {
-    const { userId } = req.params;
-    try {
-      const allMeasurements = await this.measurementModel.findAll({
-        where: {
-          userId: userId,
-        },
-      });
-      return res.json(allMeasurements);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
 
   // Edit specific user
   async editUser(req, res) {
@@ -300,6 +201,149 @@ class UsersController extends BaseController {
       });
       await measurementProfile.save();
       return res.json(measurementProfile);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  async getAllWishlists(req, res) {
+    console.log("tried...");
+    const { userId } = req.params;
+    try {
+      const wishes = await this.wishlistModel.findAll({
+        where: { userId: userId },
+        include: [
+          this.fabricModel,
+          this.cuffModel,
+          this.collarModel,
+          this.backModel,
+          this.frontModel,
+          this.pocketModel,
+          this.measurementModel,
+        ],
+      });
+      console.log(wishes);
+      return res.json(wishes);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // get all items in shoping cart
+  async getAllItems(req, res) {
+    console.log("tried...");
+    const { userId } = req.params;
+    try {
+      const items = await this.shoppingCartModel.findAll({
+        where: { userId: userId },
+        include: [
+          this.fabricModel,
+          this.cuffModel,
+          this.collarModel,
+          this.backModel,
+          this.frontModel,
+          this.pocketModel,
+          this.measurementModel,
+        ],
+      });
+      return res.json(items);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete wishlist for specific user
+  async deleteOneWishlist(req, res) {
+    const { userId, wishlistId } = req.params;
+    try {
+      const deletedWishlist = await this.wishlistModel.destroy({
+        where: {
+          id: wishlistId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedWishlist);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete one item in shopping cart for specific user
+  async deleteOneItem(req, res) {
+    const { userId, shoppingCartId } = req.params;
+    try {
+      const deletedShoppingCart = await this.shoppingCartModel.destroy({
+        where: {
+          id: shoppingCartId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedShoppingCart);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  async deleteAllWishlist(req, res) {
+    const { userId } = req.params;
+    try {
+      const deletedWishlists = await this.wishlistModel.destroy({
+        where: {
+          userId: userId,
+        },
+      });
+      return res.json(deletedWishlists);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // Delete all items in shopping cart
+  async deleteAllItems(req, res) {
+    const { userId } = req.params;
+    try {
+      const deletedItems = await this.shoppingCartModel.destroy({
+        where: {
+          userId: userId,
+        },
+      });
+      return res.json(deletedItems);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //edit one's wishlist
+  async editOneWishlist(req, res) {
+    const { measurementId } = req.body;
+    const { userId } = req.params;
+    console.log(req.body);
+    try {
+      const user = await this.wishlistModel.findByPk(userId);
+
+      user.set({
+        measurementId: measurementId,
+      });
+      await user.save();
+      return res.json(user);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //edit one item in shopping cart
+  async editOneItem(req, res) {
+    const { measurementId } = req.body;
+    const { userId } = req.params;
+    console.log(req.body);
+    try {
+      const editedItem = await this.shoppingCartModel.findByPk(userId);
+
+      user.set({
+        measurementId: measurementId,
+      });
+      await user.save();
+      return res.json(editedItem);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
