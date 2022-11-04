@@ -46,6 +46,7 @@ const {
   order,
   order_detail,
   wishlist,
+  shoppingCart,
 } = db;
 
 // initializing Controllers -> note the lowercase for the first word
@@ -65,7 +66,8 @@ const usersController = new UsersController(
   collar,
   back,
   front,
-  pocket
+  pocket,
+  shoppingCart
 );
 
 const orderController = new OrderController(
@@ -78,7 +80,8 @@ const orderController = new OrderController(
   collar,
   back,
   front,
-  pocket
+  pocket,
+  shoppingCart
 );
 const orderDetailsController = new OrderDetailsController(order_detail);
 const wishlistsController = new WishlistsController(wishlist);

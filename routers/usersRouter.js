@@ -35,6 +35,27 @@ class UsersRouter {
       this.controller.getMeasurements.bind(this.controller)
     );
 
+    //insert one size profile
+    router.post(
+      "/:userId/measurements",
+      this.auth,
+      this.controller.insertOneMeasurement.bind(this.controller)
+    );
+
+    //delete one size profile
+    router.delete(
+      "/:userId/measurements/:measurementId",
+      this.auth,
+      this.controller.deleteOneMeasurement.bind(this.controller)
+    );
+
+    //edit size profile
+    router.put(
+      "/:userId/:measurementId",
+      this.auth,
+      this.controller.editMeasurement.bind(this.controller)
+    );
+    //get all wishlists
     router.get(
       "/:userId/wishlists",
       this.auth,
@@ -61,25 +82,31 @@ class UsersRouter {
       this.controller.deleteAllWishlist.bind(this.controller)
     );
 
-    //insert one size profile
-    router.post(
-      "/:userId/measurements",
+    //get all items in specific user's shopping cart
+    router.get(
+      "/:userId/shoppingCart",
       this.auth,
-      this.controller.insertOneMeasurement.bind(this.controller)
+      this.controller.getAllItems.bind(this.controller)
     );
 
-    //delete one size profile
+    //delete an item in specific user's shopping cart
     router.delete(
-      "/:userId/measurements/:measurementId",
+      "/:userId/shoppingCart/:shoppingCartId",
       this.auth,
-      this.controller.deleteOneMeasurement.bind(this.controller)
+      this.controller.deleteOneItem.bind(this.controller)
     );
 
-    //edit size profile
+    //edit an item in specific user's shopping cart
     router.put(
-      "/:userId/:measurementId",
+      "/:userId/shoppingCart/:shoppingCartId",
+      this.controller.editOneItem.bind(this.controller)
+    );
+
+    //delete all items in specific user's shopping cart
+    router.delete(
+      "/:userId/shoppingCart/",
       this.auth,
-      this.controller.editMeasurement.bind(this.controller)
+      this.controller.deleteAllItems.bind(this.controller)
     );
 
     return router;
